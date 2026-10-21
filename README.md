@@ -105,11 +105,14 @@ quando a ata diz "choque de tarifas").
 | BM25 (padrão) | 0,72 | 0,54 | 0,64 | 0,90 | 0,60 |
 | Híbrida + MiniLM multilíngue (220 MB) | 0,76 | 0,53 | 0,63 | 1,00 | 0,60 |
 | Híbrida + potion multilíngue (estático) | 0,72 | 0,49 | 0,61 | 0,90 | 0,60 |
+| Híbrida + EmbeddingGemma 300M (1,2 GB) | 0,72 | 0,50 | 0,71 | 1,00 | 0,53 |
 
 O que os números mostram:
 
 - **Os embeddings pequenos quase não ajudam nas paráfrases.** O MiniLM lê só 128 tokens, e os parágrafos têm
-  até 450.
+  até 450. O EmbeddingGemma, maior e mais recente, põe o resultado certo mais no topo (melhor MRR) e
+  acerta todas as diretas, mas erra mais paráfrases, pesa 1,2 GB e levou 49 minutos para indexar o corpus na CPU.
+  Nenhum modelo ganhou com folga, então o padrão é o MiniLM: o melhor hit@5 com 220 MB.
 - **Num servidor MCP, quem escreve a busca é o modelo.** Por isso a descrição de `buscar_atas` ensina o
   vocabulário do Copom e sugere várias buscas curtas. Na prática, isso resolve boa parte das paráfrases sem
   nenhum modelo extra.
