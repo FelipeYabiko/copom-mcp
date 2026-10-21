@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+      # Inclui o teste que sobe o servidor por stdio e o eval de busca com linha de base.
+      - run: pytest -q
+      - name: Resumo do eval de busca
+        run: python evals/run_busca.py >> "$GITHUB_STEP_SUMMARY"
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: pip install build && python -m build
+      - name: O pacote instalado funciona sem o código-fonte
+        run: |
+          python -m venv /tmp/venv && /tmp/venv/bin/pip install dist/*.whl
+          cd /tmp && /tmp/venv/bin/copom-mcp buscar "racionamento de energia" -n 1

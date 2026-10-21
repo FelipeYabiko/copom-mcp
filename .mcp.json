@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "copom": {
+      "type": "stdio",
+      "command": ".venv/bin/copom-mcp",
+      "args": [],
+      "env": { "COPOM_MCP_SEMANTIC": "0" }
+    }
+  }
+}

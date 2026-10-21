@@ -1,0 +1,22 @@
+# Publica no PyPI quando uma release é criada no GitHub.
+# Configure antes o "trusted publisher" em https://pypi.org/manage/account/publishing/
+# (projeto copom-mcp, repositório FelipeYabiko/copom-mcp, workflow publish.yml, ambiente pypi).
+name: Publicar no PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: pip install build && python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1

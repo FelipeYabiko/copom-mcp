@@ -1,0 +1,2351 @@
+[
+ {
+  "number": 21,
+  "date": "1998-01-28",
+  "published": "1998-05-22",
+  "title": "21ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 22,
+  "date": "1998-03-04",
+  "published": "1998-06-26",
+  "title": "22ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 23,
+  "date": "1998-04-15",
+  "published": "1998-07-31",
+  "title": "23ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 24,
+  "date": "1998-05-20",
+  "published": "1998-08-04",
+  "title": "24ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 25,
+  "date": "1998-06-24",
+  "published": "1998-10-09",
+  "title": "25ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 26,
+  "date": "1998-07-29",
+  "published": "1998-11-13",
+  "title": "26ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 27,
+  "date": "1998-09-02",
+  "published": "1998-12-18",
+  "title": "27ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 28,
+  "date": "1998-09-10",
+  "published": "1999-02-12",
+  "title": "28ª Reunião (Extraordinária)",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 29,
+  "date": "1998-10-07",
+  "published": "1999-02-12",
+  "title": "29ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 30,
+  "date": "1998-11-11",
+  "published": "1999-03-05",
+  "title": "30ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 31,
+  "date": "1998-12-16",
+  "published": "1999-04-16",
+  "title": "31ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 32,
+  "date": "1999-01-18",
+  "published": "1999-05-21",
+  "title": "32ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": null
+ },
+ {
+  "number": 33,
+  "date": "1999-03-04",
+  "published": "1999-06-25",
+  "title": "33ª Reunião",
+  "pdf_url": null,
+  "selic_before": null,
+  "selic_after": 45.0
+ },
+ {
+  "number": 34,
+  "date": "1999-04-14",
+  "published": "1999-07-30",
+  "title": "34ª Reunião",
+  "pdf_url": null,
+  "selic_before": 39.5,
+  "selic_after": 34.0
+ },
+ {
+  "number": 35,
+  "date": "1999-05-19",
+  "published": "1999-07-30",
+  "title": "35ª Reunião",
+  "pdf_url": null,
+  "selic_before": 27.0,
+  "selic_after": 23.5
+ },
+ {
+  "number": 36,
+  "date": "1999-06-23",
+  "published": "1999-07-08",
+  "title": "36ª Reunião",
+  "pdf_url": null,
+  "selic_before": 22.0,
+  "selic_after": 21.0
+ },
+ {
+  "number": 37,
+  "date": "1999-07-28",
+  "published": "1999-08-12",
+  "title": "37ª Reunião",
+  "pdf_url": null,
+  "selic_before": 21.0,
+  "selic_after": 19.5
+ },
+ {
+  "number": 38,
+  "date": "1999-09-01",
+  "published": "1999-09-16",
+  "title": "38ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.5,
+  "selic_after": 19.5
+ },
+ {
+  "number": 39,
+  "date": "1999-09-22",
+  "published": "1999-10-07",
+  "title": "39ª Reunião (Extraordinária)",
+  "pdf_url": null,
+  "selic_before": 19.5,
+  "selic_after": 19.0
+ },
+ {
+  "number": 40,
+  "date": "1999-10-06",
+  "published": "1999-10-21",
+  "title": "40ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 41,
+  "date": "1999-11-10",
+  "published": "1999-11-24",
+  "title": "41ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 42,
+  "date": "1999-12-15",
+  "published": "1999-12-30",
+  "title": "42ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 43,
+  "date": "2000-01-19",
+  "published": "2000-02-02",
+  "title": "43ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 44,
+  "date": "2000-02-16",
+  "published": "2000-02-23",
+  "title": "44ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 45,
+  "date": "2000-03-22",
+  "published": "2000-03-29",
+  "title": "45ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 46,
+  "date": "2000-04-19",
+  "published": "2000-04-26",
+  "title": "46ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.5
+ },
+ {
+  "number": 47,
+  "date": "2000-05-24",
+  "published": "2000-05-31",
+  "title": "47ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.5
+ },
+ {
+  "number": 48,
+  "date": "2000-06-20",
+  "published": "2000-06-27",
+  "title": "48ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 17.5
+ },
+ {
+  "number": 49,
+  "date": "2000-07-19",
+  "published": "2000-07-26",
+  "title": "49ª Reunião",
+  "pdf_url": null,
+  "selic_before": 17.0,
+  "selic_after": 16.5
+ },
+ {
+  "number": 50,
+  "date": "2000-08-23",
+  "published": "2000-08-30",
+  "title": "50ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 51,
+  "date": "2000-09-20",
+  "published": "2000-09-27",
+  "title": "51ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 52,
+  "date": "2000-10-18",
+  "published": "2000-10-25",
+  "title": "52ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 53,
+  "date": "2000-11-22",
+  "published": "2000-11-29",
+  "title": "53ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 54,
+  "date": "2000-12-20",
+  "published": "2000-12-27",
+  "title": "54ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 15.75
+ },
+ {
+  "number": 55,
+  "date": "2001-01-17",
+  "published": "2001-01-24",
+  "title": "55ª Reunião",
+  "pdf_url": null,
+  "selic_before": 15.75,
+  "selic_after": 15.25
+ },
+ {
+  "number": 56,
+  "date": "2001-02-14",
+  "published": "2001-02-21",
+  "title": "56ª Reunião",
+  "pdf_url": null,
+  "selic_before": 15.25,
+  "selic_after": 15.25
+ },
+ {
+  "number": 57,
+  "date": "2001-03-21",
+  "published": "2001-03-28",
+  "title": "57ª Reunião",
+  "pdf_url": null,
+  "selic_before": 15.25,
+  "selic_after": 15.75
+ },
+ {
+  "number": 58,
+  "date": "2001-04-18",
+  "published": "2001-04-25",
+  "title": "58ª Reunião",
+  "pdf_url": null,
+  "selic_before": 15.75,
+  "selic_after": 16.25
+ },
+ {
+  "number": 59,
+  "date": "2001-05-23",
+  "published": "2001-05-30",
+  "title": "59ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.25,
+  "selic_after": 16.75
+ },
+ {
+  "number": 60,
+  "date": "2001-06-20",
+  "published": "2001-06-27",
+  "title": "60ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.75,
+  "selic_after": 18.25
+ },
+ {
+  "number": 61,
+  "date": "2001-07-18",
+  "published": "2001-07-25",
+  "title": "61ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.25,
+  "selic_after": 19.0
+ },
+ {
+  "number": 62,
+  "date": "2001-08-22",
+  "published": "2001-08-29",
+  "title": "62ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 63,
+  "date": "2001-09-19",
+  "published": "2001-09-26",
+  "title": "63ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 64,
+  "date": "2001-10-17",
+  "published": "2001-10-24",
+  "title": "64ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 65,
+  "date": "2001-11-21",
+  "published": "2001-11-28",
+  "title": "65ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 66,
+  "date": "2001-12-19",
+  "published": "2001-12-26",
+  "title": "66ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 67,
+  "date": "2002-01-23",
+  "published": "2002-01-30",
+  "title": "67ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 68,
+  "date": "2002-02-20",
+  "published": "2002-02-27",
+  "title": "68ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 18.75
+ },
+ {
+  "number": 69,
+  "date": "2002-03-20",
+  "published": "2002-03-27",
+  "title": "69ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.75,
+  "selic_after": 18.5
+ },
+ {
+  "number": 70,
+  "date": "2002-04-17",
+  "published": "2002-04-24",
+  "title": "70ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.5
+ },
+ {
+  "number": 71,
+  "date": "2002-05-22",
+  "published": "2002-05-29",
+  "title": "71ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.5
+ },
+ {
+  "number": 72,
+  "date": "2002-06-19",
+  "published": "2002-06-26",
+  "title": "72ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.5
+ },
+ {
+  "number": 73,
+  "date": "2002-07-17",
+  "published": "2002-07-24",
+  "title": "73ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.0
+ },
+ {
+  "number": 74,
+  "date": "2002-08-21",
+  "published": "2002-08-28",
+  "title": "74ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.0,
+  "selic_after": 18.0
+ },
+ {
+  "number": 75,
+  "date": "2002-09-18",
+  "published": "2002-09-25",
+  "title": "75ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.0,
+  "selic_after": 18.0
+ },
+ {
+  "number": 76,
+  "date": "2002-10-14",
+  "published": "2002-10-16",
+  "title": "76ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.0,
+  "selic_after": 21.0
+ },
+ {
+  "number": 77,
+  "date": "2002-10-23",
+  "published": "2002-10-30",
+  "title": "77ª Reunião",
+  "pdf_url": null,
+  "selic_before": 21.0,
+  "selic_after": 21.0
+ },
+ {
+  "number": 78,
+  "date": "2002-11-20",
+  "published": "2002-11-27",
+  "title": "78ª Reunião",
+  "pdf_url": null,
+  "selic_before": 21.0,
+  "selic_after": 22.0
+ },
+ {
+  "number": 79,
+  "date": "2002-12-18",
+  "published": "2002-12-24",
+  "title": "79ª Reunião",
+  "pdf_url": null,
+  "selic_before": 22.0,
+  "selic_after": 25.0
+ },
+ {
+  "number": 80,
+  "date": "2003-01-22",
+  "published": "2003-01-29",
+  "title": "80ª Reunião",
+  "pdf_url": null,
+  "selic_before": 25.0,
+  "selic_after": 25.5
+ },
+ {
+  "number": 81,
+  "date": "2003-02-19",
+  "published": "2003-02-26",
+  "title": "81ª Reunião",
+  "pdf_url": null,
+  "selic_before": 25.5,
+  "selic_after": 26.5
+ },
+ {
+  "number": 82,
+  "date": "2003-03-19",
+  "published": "2003-03-26",
+  "title": "82ª Reunião",
+  "pdf_url": null,
+  "selic_before": 26.5,
+  "selic_after": 26.5
+ },
+ {
+  "number": 83,
+  "date": "2003-04-23",
+  "published": "2003-04-30",
+  "title": "83ª Reunião",
+  "pdf_url": null,
+  "selic_before": 26.5,
+  "selic_after": 26.5
+ },
+ {
+  "number": 84,
+  "date": "2003-05-21",
+  "published": "2003-05-28",
+  "title": "84ª Reunião",
+  "pdf_url": null,
+  "selic_before": 26.5,
+  "selic_after": 26.5
+ },
+ {
+  "number": 85,
+  "date": "2003-06-18",
+  "published": "2003-06-27",
+  "title": "85ª Reunião",
+  "pdf_url": null,
+  "selic_before": 26.5,
+  "selic_after": 26.5
+ },
+ {
+  "number": 86,
+  "date": "2003-07-23",
+  "published": "2003-07-31",
+  "title": "86ª Reunião",
+  "pdf_url": null,
+  "selic_before": 26.0,
+  "selic_after": 24.5
+ },
+ {
+  "number": 87,
+  "date": "2003-08-20",
+  "published": "2003-08-28",
+  "title": "87ª Reunião",
+  "pdf_url": null,
+  "selic_before": 24.5,
+  "selic_after": 22.0
+ },
+ {
+  "number": 88,
+  "date": "2003-09-17",
+  "published": "2003-09-24",
+  "title": "88ª Reunião",
+  "pdf_url": null,
+  "selic_before": 22.0,
+  "selic_after": 20.0
+ },
+ {
+  "number": 89,
+  "date": "2003-10-22",
+  "published": "2003-10-30",
+  "title": "89ª Reunião",
+  "pdf_url": null,
+  "selic_before": 20.0,
+  "selic_after": 19.0
+ },
+ {
+  "number": 90,
+  "date": "2003-11-19",
+  "published": "2003-11-27",
+  "title": "90ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 17.5
+ },
+ {
+  "number": 91,
+  "date": "2003-12-17",
+  "published": "2003-12-24",
+  "title": "91ª Reunião",
+  "pdf_url": null,
+  "selic_before": 17.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 92,
+  "date": "2004-01-21",
+  "published": "2004-01-28",
+  "title": "92ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 93,
+  "date": "2004-02-18",
+  "published": "2004-02-26",
+  "title": "93ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.5
+ },
+ {
+  "number": 94,
+  "date": "2004-03-17",
+  "published": "2004-03-25",
+  "title": "94ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 16.25
+ },
+ {
+  "number": 95,
+  "date": "2004-04-14",
+  "published": "2004-04-22",
+  "title": "95ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.25,
+  "selic_after": 16.0
+ },
+ {
+  "number": 96,
+  "date": "2004-05-19",
+  "published": "2004-05-27",
+  "title": "96ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.0,
+  "selic_after": 16.0
+ },
+ {
+  "number": 97,
+  "date": "2004-06-16",
+  "published": "2004-06-24",
+  "title": "97ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.0,
+  "selic_after": 16.0
+ },
+ {
+  "number": 98,
+  "date": "2004-07-21",
+  "published": "2004-07-29",
+  "title": "98ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.0,
+  "selic_after": 16.0
+ },
+ {
+  "number": 99,
+  "date": "2004-08-18",
+  "published": "2004-08-26",
+  "title": "99ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.0,
+  "selic_after": 16.0
+ },
+ {
+  "number": 100,
+  "date": "2004-09-15",
+  "published": "2004-09-23",
+  "title": "100ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.0,
+  "selic_after": 16.25
+ },
+ {
+  "number": 101,
+  "date": "2004-10-20",
+  "published": "2004-10-28",
+  "title": "101ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.25,
+  "selic_after": 16.75
+ },
+ {
+  "number": 102,
+  "date": "2004-11-17",
+  "published": "2004-11-25",
+  "title": "102ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.75,
+  "selic_after": 17.25
+ },
+ {
+  "number": 103,
+  "date": "2004-12-15",
+  "published": "2004-12-23",
+  "title": "103ª Reunião",
+  "pdf_url": null,
+  "selic_before": 17.25,
+  "selic_after": 17.75
+ },
+ {
+  "number": 104,
+  "date": "2005-01-19",
+  "published": "2005-01-27",
+  "title": "104ª Reunião",
+  "pdf_url": null,
+  "selic_before": 17.75,
+  "selic_after": 18.25
+ },
+ {
+  "number": 105,
+  "date": "2005-02-16",
+  "published": "2005-02-24",
+  "title": "105ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.25,
+  "selic_after": 18.75
+ },
+ {
+  "number": 106,
+  "date": "2005-03-16",
+  "published": "2005-03-24",
+  "title": "106ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.75,
+  "selic_after": 19.25
+ },
+ {
+  "number": 107,
+  "date": "2005-04-20",
+  "published": "2005-04-28",
+  "title": "107ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.25,
+  "selic_after": 19.5
+ },
+ {
+  "number": 108,
+  "date": "2005-05-18",
+  "published": "2005-05-27",
+  "title": "108ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.5,
+  "selic_after": 19.75
+ },
+ {
+  "number": 109,
+  "date": "2005-06-15",
+  "published": "2005-06-23",
+  "title": "109ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.75,
+  "selic_after": 19.75
+ },
+ {
+  "number": 110,
+  "date": "2005-07-20",
+  "published": "2005-07-28",
+  "title": "110ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.75,
+  "selic_after": 19.75
+ },
+ {
+  "number": 111,
+  "date": "2005-08-17",
+  "published": "2005-08-25",
+  "title": "111ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.75,
+  "selic_after": 19.75
+ },
+ {
+  "number": 112,
+  "date": "2005-09-14",
+  "published": "2005-09-22",
+  "title": "112ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.75,
+  "selic_after": 19.5
+ },
+ {
+  "number": 113,
+  "date": "2005-10-19",
+  "published": "2005-10-27",
+  "title": "113ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.5,
+  "selic_after": 19.0
+ },
+ {
+  "number": 114,
+  "date": "2005-11-23",
+  "published": "2005-12-01",
+  "title": "114ª Reunião",
+  "pdf_url": null,
+  "selic_before": 19.0,
+  "selic_after": 18.5
+ },
+ {
+  "number": 115,
+  "date": "2005-12-14",
+  "published": "2005-12-22",
+  "title": "115ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.5,
+  "selic_after": 18.0
+ },
+ {
+  "number": 116,
+  "date": "2006-01-18",
+  "published": "2006-01-26",
+  "title": "116ª Reunião",
+  "pdf_url": null,
+  "selic_before": 18.0,
+  "selic_after": 17.25
+ },
+ {
+  "number": 117,
+  "date": "2006-03-08",
+  "published": "2006-03-16",
+  "title": "117ª Reunião",
+  "pdf_url": null,
+  "selic_before": 17.25,
+  "selic_after": 16.5
+ },
+ {
+  "number": 118,
+  "date": "2006-04-19",
+  "published": "2006-04-27",
+  "title": "118ª Reunião",
+  "pdf_url": null,
+  "selic_before": 16.5,
+  "selic_after": 15.75
+ },
+ {
+  "number": 119,
+  "date": "2006-05-31",
+  "published": "2006-06-08",
+  "title": "119ª Reunião",
+  "pdf_url": null,
+  "selic_before": 15.75,
+  "selic_after": 15.25
+ },
+ {
+  "number": 120,
+  "date": "2006-07-19",
+  "published": "2006-07-27",
+  "title": "120ª Reunião",
+  "pdf_url": null,
+  "selic_before": 15.25,
+  "selic_after": 14.75
+ },
+ {
+  "number": 121,
+  "date": "2006-08-30",
+  "published": "2006-09-08",
+  "title": "121ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.75,
+  "selic_after": 14.25
+ },
+ {
+  "number": 122,
+  "date": "2006-10-18",
+  "published": "2006-10-26",
+  "title": "122ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 13.75
+ },
+ {
+  "number": 123,
+  "date": "2006-11-29",
+  "published": "2006-12-07",
+  "title": "123ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.75,
+  "selic_after": 13.25
+ },
+ {
+  "number": 124,
+  "date": "2007-01-24",
+  "published": "2007-02-01",
+  "title": "124ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.25,
+  "selic_after": 13.0
+ },
+ {
+  "number": 125,
+  "date": "2007-03-07",
+  "published": "2007-03-15",
+  "title": "125ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.0,
+  "selic_after": 12.75
+ },
+ {
+  "number": 126,
+  "date": "2007-04-18",
+  "published": "2007-04-26",
+  "title": "126ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.75,
+  "selic_after": 12.5
+ },
+ {
+  "number": 127,
+  "date": "2007-06-06",
+  "published": "2007-06-14",
+  "title": "127ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.5,
+  "selic_after": 12.5
+ },
+ {
+  "number": 128,
+  "date": "2007-07-18",
+  "published": "2007-07-26",
+  "title": "128ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.0,
+  "selic_after": 11.5
+ },
+ {
+  "number": 129,
+  "date": "2007-09-05",
+  "published": "2007-09-13",
+  "title": "129ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.5,
+  "selic_after": 11.25
+ },
+ {
+  "number": 130,
+  "date": "2007-10-17",
+  "published": "2007-10-25",
+  "title": "130ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.25
+ },
+ {
+  "number": 131,
+  "date": "2007-12-05",
+  "published": "2007-12-13",
+  "title": "131ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.25
+ },
+ {
+  "number": 132,
+  "date": "2008-01-23",
+  "published": "2008-01-31",
+  "title": "132ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.25
+ },
+ {
+  "number": 133,
+  "date": "2008-03-05",
+  "published": "2008-03-13",
+  "title": "133ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.25
+ },
+ {
+  "number": 134,
+  "date": "2008-04-16",
+  "published": "2008-04-24",
+  "title": "134ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.75
+ },
+ {
+  "number": 135,
+  "date": "2008-06-04",
+  "published": "2008-06-12",
+  "title": "135ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.75,
+  "selic_after": 12.25
+ },
+ {
+  "number": 136,
+  "date": "2008-07-23",
+  "published": "2008-07-31",
+  "title": "136ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.25,
+  "selic_after": 13.0
+ },
+ {
+  "number": 137,
+  "date": "2008-09-10",
+  "published": "2008-09-18",
+  "title": "137ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.0,
+  "selic_after": 13.75
+ },
+ {
+  "number": 138,
+  "date": "2008-10-29",
+  "published": "2008-11-06",
+  "title": "138ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 139,
+  "date": "2008-12-10",
+  "published": "2008-12-18",
+  "title": "139ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 140,
+  "date": "2009-01-21",
+  "published": "2009-01-29",
+  "title": "140ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.75,
+  "selic_after": 12.75
+ },
+ {
+  "number": 141,
+  "date": "2009-03-11",
+  "published": "2009-03-19",
+  "title": "141ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.75,
+  "selic_after": 11.25
+ },
+ {
+  "number": 142,
+  "date": "2009-04-29",
+  "published": "2009-05-07",
+  "title": "142ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 10.25
+ },
+ {
+  "number": 143,
+  "date": "2009-06-10",
+  "published": "2009-06-18",
+  "title": "143ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.25,
+  "selic_after": 10.25
+ },
+ {
+  "number": 144,
+  "date": "2009-07-22",
+  "published": "2009-07-30",
+  "title": "144ª Reunião",
+  "pdf_url": null,
+  "selic_before": 9.25,
+  "selic_after": 8.75
+ },
+ {
+  "number": 145,
+  "date": "2009-09-02",
+  "published": "2009-09-10",
+  "title": "145ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.75,
+  "selic_after": 8.75
+ },
+ {
+  "number": 146,
+  "date": "2009-10-21",
+  "published": "2009-10-29",
+  "title": "146ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.75,
+  "selic_after": 8.75
+ },
+ {
+  "number": 147,
+  "date": "2009-12-09",
+  "published": "2009-12-17",
+  "title": "147ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.75,
+  "selic_after": 8.75
+ },
+ {
+  "number": 148,
+  "date": "2010-01-27",
+  "published": "2010-02-04",
+  "title": "148ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.75,
+  "selic_after": 8.75
+ },
+ {
+  "number": 149,
+  "date": "2010-03-17",
+  "published": "2010-03-25",
+  "title": "149ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.75,
+  "selic_after": 8.75
+ },
+ {
+  "number": 150,
+  "date": "2010-04-28",
+  "published": "2010-05-06",
+  "title": "150ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.75,
+  "selic_after": 9.5
+ },
+ {
+  "number": 151,
+  "date": "2010-06-09",
+  "published": "2010-06-17",
+  "title": "151ª Reunião",
+  "pdf_url": null,
+  "selic_before": 9.5,
+  "selic_after": 10.25
+ },
+ {
+  "number": 152,
+  "date": "2010-07-21",
+  "published": "2010-07-29",
+  "title": "152ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.25,
+  "selic_after": 10.75
+ },
+ {
+  "number": 153,
+  "date": "2010-09-01",
+  "published": "2010-09-09",
+  "title": "153ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.75,
+  "selic_after": 10.75
+ },
+ {
+  "number": 154,
+  "date": "2010-10-20",
+  "published": "2010-10-28",
+  "title": "154ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.75,
+  "selic_after": 10.75
+ },
+ {
+  "number": 155,
+  "date": "2010-12-08",
+  "published": "2010-12-16",
+  "title": "155ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.75,
+  "selic_after": 10.75
+ },
+ {
+  "number": 156,
+  "date": "2011-01-19",
+  "published": "2011-01-27",
+  "title": "156ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.75,
+  "selic_after": 11.25
+ },
+ {
+  "number": 157,
+  "date": "2011-03-02",
+  "published": "2011-03-10",
+  "title": "157ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.75
+ },
+ {
+  "number": 158,
+  "date": "2011-04-20",
+  "published": "2011-04-28",
+  "title": "158ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.75,
+  "selic_after": 11.75
+ },
+ {
+  "number": 159,
+  "date": "2011-06-08",
+  "published": "2011-06-16",
+  "title": "159ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.0,
+  "selic_after": 12.25
+ },
+ {
+  "number": 160,
+  "date": "2011-07-20",
+  "published": "2011-07-28",
+  "title": "160ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.25,
+  "selic_after": 12.5
+ },
+ {
+  "number": 161,
+  "date": "2011-08-31",
+  "published": "2011-09-08",
+  "title": "161ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.5,
+  "selic_after": 12.0
+ },
+ {
+  "number": 162,
+  "date": "2011-10-19",
+  "published": "2011-10-27",
+  "title": "162ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.0,
+  "selic_after": 11.5
+ },
+ {
+  "number": 163,
+  "date": "2011-11-30",
+  "published": "2011-12-08",
+  "title": "163ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.5,
+  "selic_after": 11.0
+ },
+ {
+  "number": 164,
+  "date": "2012-01-18",
+  "published": "2012-01-26",
+  "title": "164ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.0,
+  "selic_after": 10.5
+ },
+ {
+  "number": 165,
+  "date": "2012-03-07",
+  "published": "2012-03-15",
+  "title": "165ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.5,
+  "selic_after": 9.75
+ },
+ {
+  "number": 166,
+  "date": "2012-04-18",
+  "published": "2012-04-26",
+  "title": "166ª Reunião",
+  "pdf_url": null,
+  "selic_before": 9.75,
+  "selic_after": 9.0
+ },
+ {
+  "number": 167,
+  "date": "2012-05-30",
+  "published": "2012-06-08",
+  "title": "167ª Reunião",
+  "pdf_url": null,
+  "selic_before": 9.0,
+  "selic_after": 8.5
+ },
+ {
+  "number": 168,
+  "date": "2012-07-11",
+  "published": "2012-07-19",
+  "title": "168ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.5,
+  "selic_after": 8.0
+ },
+ {
+  "number": 169,
+  "date": "2012-08-29",
+  "published": "2012-09-06",
+  "title": "169ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.0,
+  "selic_after": 7.5
+ },
+ {
+  "number": 170,
+  "date": "2012-10-10",
+  "published": "2012-10-18",
+  "title": "170ª Reunião",
+  "pdf_url": null,
+  "selic_before": 7.5,
+  "selic_after": 7.25
+ },
+ {
+  "number": 171,
+  "date": "2012-11-28",
+  "published": "2012-12-06",
+  "title": "171ª Reunião",
+  "pdf_url": null,
+  "selic_before": 7.25,
+  "selic_after": 7.25
+ },
+ {
+  "number": 172,
+  "date": "2013-01-16",
+  "published": "2013-01-24",
+  "title": "172ª Reunião",
+  "pdf_url": null,
+  "selic_before": 7.25,
+  "selic_after": 7.25
+ },
+ {
+  "number": 173,
+  "date": "2013-03-06",
+  "published": "2013-03-14",
+  "title": "173ª Reunião",
+  "pdf_url": null,
+  "selic_before": 7.25,
+  "selic_after": 7.25
+ },
+ {
+  "number": 174,
+  "date": "2013-04-17",
+  "published": "2013-04-25",
+  "title": "174ª Reunião",
+  "pdf_url": null,
+  "selic_before": 7.25,
+  "selic_after": 7.5
+ },
+ {
+  "number": 175,
+  "date": "2013-05-29",
+  "published": "2013-06-06",
+  "title": "175ª Reunião",
+  "pdf_url": null,
+  "selic_before": 7.5,
+  "selic_after": 8.0
+ },
+ {
+  "number": 176,
+  "date": "2013-07-10",
+  "published": "2013-07-18",
+  "title": "176ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.0,
+  "selic_after": 8.5
+ },
+ {
+  "number": 177,
+  "date": "2013-08-28",
+  "published": "2013-09-05",
+  "title": "177ª Reunião",
+  "pdf_url": null,
+  "selic_before": 8.5,
+  "selic_after": 9.0
+ },
+ {
+  "number": 178,
+  "date": "2013-10-09",
+  "published": "2013-10-17",
+  "title": "178ª Reunião",
+  "pdf_url": null,
+  "selic_before": 9.0,
+  "selic_after": 9.5
+ },
+ {
+  "number": 179,
+  "date": "2013-11-27",
+  "published": "2013-12-05",
+  "title": "179ª Reunião",
+  "pdf_url": null,
+  "selic_before": 9.5,
+  "selic_after": 10.0
+ },
+ {
+  "number": 180,
+  "date": "2014-01-15",
+  "published": "2014-01-23",
+  "title": "180ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.0,
+  "selic_after": 10.5
+ },
+ {
+  "number": 181,
+  "date": "2014-02-26",
+  "published": "2014-03-06",
+  "title": "181ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.5,
+  "selic_after": 10.75
+ },
+ {
+  "number": 182,
+  "date": "2014-04-02",
+  "published": "2014-04-10",
+  "title": "182ª Reunião",
+  "pdf_url": null,
+  "selic_before": 10.75,
+  "selic_after": 11.0
+ },
+ {
+  "number": 183,
+  "date": "2014-05-28",
+  "published": "2014-06-05",
+  "title": "183ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.0,
+  "selic_after": 11.0
+ },
+ {
+  "number": 184,
+  "date": "2014-07-16",
+  "published": "2014-07-24",
+  "title": "184ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.0,
+  "selic_after": 11.0
+ },
+ {
+  "number": 185,
+  "date": "2014-09-03",
+  "published": "2014-09-11",
+  "title": "185ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.0,
+  "selic_after": 11.0
+ },
+ {
+  "number": 186,
+  "date": "2014-10-29",
+  "published": "2014-11-06",
+  "title": "186ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.0,
+  "selic_after": 11.25
+ },
+ {
+  "number": 187,
+  "date": "2014-12-03",
+  "published": "2014-12-11",
+  "title": "187ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.25,
+  "selic_after": 11.75
+ },
+ {
+  "number": 188,
+  "date": "2015-01-21",
+  "published": "2015-01-29",
+  "title": "188ª Reunião",
+  "pdf_url": null,
+  "selic_before": 11.75,
+  "selic_after": 12.25
+ },
+ {
+  "number": 189,
+  "date": "2015-03-04",
+  "published": "2015-03-12",
+  "title": "189ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.25,
+  "selic_after": 12.75
+ },
+ {
+  "number": 190,
+  "date": "2015-04-29",
+  "published": "2015-05-07",
+  "title": "190ª Reunião",
+  "pdf_url": null,
+  "selic_before": 12.75,
+  "selic_after": 13.25
+ },
+ {
+  "number": 191,
+  "date": "2015-06-03",
+  "published": "2015-06-11",
+  "title": "191ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.25,
+  "selic_after": 13.75
+ },
+ {
+  "number": 192,
+  "date": "2015-07-29",
+  "published": "2015-08-06",
+  "title": "192ª Reunião",
+  "pdf_url": null,
+  "selic_before": 13.75,
+  "selic_after": 14.25
+ },
+ {
+  "number": 193,
+  "date": "2015-09-02",
+  "published": "2015-09-10",
+  "title": "193ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 194,
+  "date": "2015-10-21",
+  "published": "2015-10-29",
+  "title": "194ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 195,
+  "date": "2015-11-25",
+  "published": "2015-12-03",
+  "title": "195ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 196,
+  "date": "2016-01-20",
+  "published": "2016-01-28",
+  "title": "196ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 197,
+  "date": "2016-03-02",
+  "published": "2016-03-10",
+  "title": "197ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 198,
+  "date": "2016-04-27",
+  "published": "2016-05-05",
+  "title": "198ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 199,
+  "date": "2016-06-08",
+  "published": "2016-06-16",
+  "title": "199ª Reunião",
+  "pdf_url": null,
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 200,
+  "date": "2016-07-20",
+  "published": "2016-07-26",
+  "title": "200ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM200-not20160720200.PDF",
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 201,
+  "date": "2016-08-31",
+  "published": "2016-09-06",
+  "title": "201ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM201-not20160831201.pdf",
+  "selic_before": 14.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 202,
+  "date": "2016-10-19",
+  "published": "2016-10-25",
+  "title": "202ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM202-not20161019202.pdf",
+  "selic_before": 14.25,
+  "selic_after": 14.0
+ },
+ {
+  "number": 203,
+  "date": "2016-11-30",
+  "published": "2016-12-06",
+  "title": "203ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM203-not20161130203.pdf",
+  "selic_before": 14.0,
+  "selic_after": 13.75
+ },
+ {
+  "number": 204,
+  "date": "2017-01-11",
+  "published": "2017-01-17",
+  "title": "204ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM204-not20170111204.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.0
+ },
+ {
+  "number": 205,
+  "date": "2017-02-22",
+  "published": "2017-03-02",
+  "title": "205ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM205-not20170222205.pdf",
+  "selic_before": 13.0,
+  "selic_after": 12.25
+ },
+ {
+  "number": 206,
+  "date": "2017-04-12",
+  "published": "2017-04-18",
+  "title": "206ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM206-not20170412206.pdf",
+  "selic_before": 12.25,
+  "selic_after": 11.25
+ },
+ {
+  "number": 207,
+  "date": "2017-05-31",
+  "published": "2017-06-06",
+  "title": "207ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM207-not20170531207.pdf",
+  "selic_before": 11.25,
+  "selic_after": 10.25
+ },
+ {
+  "number": 208,
+  "date": "2017-07-26",
+  "published": "2017-08-01",
+  "title": "208ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM208-not20170726208.pdf",
+  "selic_before": 10.25,
+  "selic_after": 9.25
+ },
+ {
+  "number": 209,
+  "date": "2017-09-06",
+  "published": "2017-09-12",
+  "title": "209ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM209-not20170906209.pdf",
+  "selic_before": 9.25,
+  "selic_after": 9.25
+ },
+ {
+  "number": 210,
+  "date": "2017-10-25",
+  "published": "2017-10-31",
+  "title": "210ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM210-not20171025210.pdf",
+  "selic_before": 8.25,
+  "selic_after": 7.5
+ },
+ {
+  "number": 211,
+  "date": "2017-12-06",
+  "published": "2017-12-12",
+  "title": "211ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM211-not20171206211.pdf",
+  "selic_before": 7.5,
+  "selic_after": 7.0
+ },
+ {
+  "number": 212,
+  "date": "2018-02-07",
+  "published": "2018-02-15",
+  "title": "212ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM212-not20180207212.pdf",
+  "selic_before": 7.0,
+  "selic_after": 6.75
+ },
+ {
+  "number": 213,
+  "date": "2018-03-21",
+  "published": "2018-03-27",
+  "title": "213ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM213-not20180321213.pdf",
+  "selic_before": 6.75,
+  "selic_after": 6.5
+ },
+ {
+  "number": 214,
+  "date": "2018-05-16",
+  "published": "2018-05-22",
+  "title": "214ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM214-not20180516214.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 215,
+  "date": "2018-06-20",
+  "published": "2018-06-26",
+  "title": "215ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM215-not20180620215.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 216,
+  "date": "2018-08-01",
+  "published": "2018-08-07",
+  "title": "216ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM216-not20180801216.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 217,
+  "date": "2018-09-19",
+  "published": "2018-09-25",
+  "title": "217ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM217-not20180919217.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 218,
+  "date": "2018-10-31",
+  "published": "2018-11-06",
+  "title": "218ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM218-not20181031218.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 219,
+  "date": "2018-12-12",
+  "published": "2018-12-18",
+  "title": "219ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM219-not20181212219.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 220,
+  "date": "2019-02-06",
+  "published": "2019-02-12",
+  "title": "220ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM220-not20190206220.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 221,
+  "date": "2019-03-20",
+  "published": "2019-03-26",
+  "title": "221ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM221-not20190320221.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 222,
+  "date": "2019-05-08",
+  "published": "2019-05-14",
+  "title": "222ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM222-not20190508222.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 223,
+  "date": "2019-06-19",
+  "published": "2019-06-25",
+  "title": "223ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom223-not20190619223.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.5
+ },
+ {
+  "number": 224,
+  "date": "2019-07-31",
+  "published": "2019-08-06",
+  "title": "224ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom224-not20190731224.pdf",
+  "selic_before": 6.5,
+  "selic_after": 6.0
+ },
+ {
+  "number": 225,
+  "date": "2019-09-18",
+  "published": "2019-09-24",
+  "title": "225ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom225-not20190918225.pdf",
+  "selic_before": 6.0,
+  "selic_after": 5.5
+ },
+ {
+  "number": 226,
+  "date": "2019-10-30",
+  "published": "2019-11-05",
+  "title": "226ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom226-not20191030226.pdf",
+  "selic_before": 5.5,
+  "selic_after": 5.0
+ },
+ {
+  "number": 227,
+  "date": "2019-12-11",
+  "published": "2019-12-17",
+  "title": "227ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom227-not20191211227.pdf",
+  "selic_before": 5.0,
+  "selic_after": 4.5
+ },
+ {
+  "number": 228,
+  "date": "2020-02-05",
+  "published": "2020-02-11",
+  "title": "228ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom228-not20200205228.pdf",
+  "selic_before": 4.5,
+  "selic_after": 4.25
+ },
+ {
+  "number": 229,
+  "date": "2020-03-18",
+  "published": "2020-03-23",
+  "title": "229ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom229-not20200318229.pdf",
+  "selic_before": 4.25,
+  "selic_after": 3.75
+ },
+ {
+  "number": 230,
+  "date": "2020-05-06",
+  "published": "2020-05-12",
+  "title": "230ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom230-not20200506230.pdf",
+  "selic_before": 3.75,
+  "selic_after": 3.0
+ },
+ {
+  "number": 231,
+  "date": "2020-06-17",
+  "published": "2020-06-23",
+  "title": "231ª Reunião",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom231-not20200617231.pdf",
+  "selic_before": 3.0,
+  "selic_after": 2.25
+ },
+ {
+  "number": 232,
+  "date": "2020-08-05",
+  "published": "2020-08-11",
+  "title": "232ª Reunião - 4-5 agosto, 2020",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom232-not20200805232.pdf",
+  "selic_before": 2.25,
+  "selic_after": 2.0
+ },
+ {
+  "number": 233,
+  "date": "2020-09-16",
+  "published": "2020-09-22",
+  "title": "233ª Reunião - 15-16 setembro, 2020",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom233-not20200916233.pdf",
+  "selic_before": 2.0,
+  "selic_after": 2.0
+ },
+ {
+  "number": 234,
+  "date": "2020-10-28",
+  "published": "2020-11-03",
+  "title": "234ª Reunião - 27-28 outubro, 2020",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom234-not20201028234.pdf",
+  "selic_before": 2.0,
+  "selic_after": 2.0
+ },
+ {
+  "number": 235,
+  "date": "2020-12-09",
+  "published": "2020-12-15",
+  "title": "235ª Reunião - 8-9 dezembro, 2020",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom235-not20201209235.pdf",
+  "selic_before": 2.0,
+  "selic_after": 2.0
+ },
+ {
+  "number": 236,
+  "date": "2021-01-20",
+  "published": "2021-01-26",
+  "title": "236ª Reunião - 19-20 janeiro, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom236-not20210120236.pdf",
+  "selic_before": 2.0,
+  "selic_after": 2.0
+ },
+ {
+  "number": 237,
+  "date": "2021-03-17",
+  "published": "2021-03-23",
+  "title": "237ª Reunião - 16-17 março, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom237-not20210317237.pdf",
+  "selic_before": 2.0,
+  "selic_after": 2.75
+ },
+ {
+  "number": 238,
+  "date": "2021-05-05",
+  "published": "2021-05-11",
+  "title": "238ª Reunião - 4-5 maio, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom238-not20210505238.pdf",
+  "selic_before": 2.75,
+  "selic_after": 3.5
+ },
+ {
+  "number": 239,
+  "date": "2021-06-16",
+  "published": "2021-06-22",
+  "title": "239ª Reunião - 15-16 junho, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom239-not20210616239.pdf",
+  "selic_before": 3.5,
+  "selic_after": 4.25
+ },
+ {
+  "number": 240,
+  "date": "2021-08-04",
+  "published": "2021-08-10",
+  "title": "240ª Reunião - 3-4 agosto, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom240-not20210804240.pdf",
+  "selic_before": 4.25,
+  "selic_after": 5.25
+ },
+ {
+  "number": 241,
+  "date": "2021-09-22",
+  "published": "2021-09-28",
+  "title": "241ª Reunião - 21-22 setembro, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom241-not20210922241.pdf",
+  "selic_before": 5.25,
+  "selic_after": 6.25
+ },
+ {
+  "number": 242,
+  "date": "2021-10-27",
+  "published": "2021-11-03",
+  "title": "242ª Reunião - 26-27 outubro, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom242-not20211027242.pdf",
+  "selic_before": 6.25,
+  "selic_after": 7.75
+ },
+ {
+  "number": 243,
+  "date": "2021-12-08",
+  "published": "2021-12-14",
+  "title": "243ª Reunião - 7-8 dezembro, 2021",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom243-not20211208243.pdf",
+  "selic_before": 7.75,
+  "selic_after": 9.25
+ },
+ {
+  "number": 244,
+  "date": "2022-02-02",
+  "published": "2022-02-08",
+  "title": "244ª Reunião - 1-2 fevereiro, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom244-not20220202244.pdf",
+  "selic_before": 9.25,
+  "selic_after": 10.75
+ },
+ {
+  "number": 245,
+  "date": "2022-03-16",
+  "published": "2022-03-22",
+  "title": "245ª Reunião - 15-16 março, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom245-not20220316245.pdf",
+  "selic_before": 10.75,
+  "selic_after": 11.75
+ },
+ {
+  "number": 246,
+  "date": "2022-05-04",
+  "published": "2022-05-10",
+  "title": "246ª Reunião - 3-4 maio, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom246-not20220504246.pdf",
+  "selic_before": 11.75,
+  "selic_after": 12.75
+ },
+ {
+  "number": 247,
+  "date": "2022-06-15",
+  "published": "2022-06-21",
+  "title": "247ª Reunião - 14-15 junho, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom247-not20220615247.pdf",
+  "selic_before": 12.75,
+  "selic_after": 13.25
+ },
+ {
+  "number": 248,
+  "date": "2022-08-03",
+  "published": "2022-08-09",
+  "title": "248ª Reunião - 2-3 agosto, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom248-not20220803248.pdf",
+  "selic_before": 13.25,
+  "selic_after": 13.75
+ },
+ {
+  "number": 249,
+  "date": "2022-09-21",
+  "published": "2022-09-27",
+  "title": "249ª Reunião - 20-21 setembro, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom249-not20220921249.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 250,
+  "date": "2022-10-26",
+  "published": "2022-11-01",
+  "title": "250ª Reunião - 25-26 outubro, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom250-not20221026250.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 251,
+  "date": "2022-12-07",
+  "published": "2022-12-13",
+  "title": "251ª Reunião - 6-7 dezembro, 2022",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom251-not20221207251.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 252,
+  "date": "2023-02-01",
+  "published": "2023-02-07",
+  "title": "252ª Reunião - 31 janeiro - 1 fevereiro, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom252-not20230201252.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 253,
+  "date": "2023-03-22",
+  "published": "2023-03-28",
+  "title": "253ª Reunião - 21-22 março, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom253-not20230322253.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 254,
+  "date": "2023-05-03",
+  "published": "2023-05-09",
+  "title": "254ª Reunião - 2-3 maio, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom254-not20230503254.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 255,
+  "date": "2023-06-21",
+  "published": "2023-06-27",
+  "title": "255ª Reunião - 20-21 junho, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom255-not20230621255.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.75
+ },
+ {
+  "number": 256,
+  "date": "2023-08-02",
+  "published": "2023-08-08",
+  "title": "256ª Reunião - 1-2 agosto, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom256-not20230802256.pdf",
+  "selic_before": 13.75,
+  "selic_after": 13.25
+ },
+ {
+  "number": 257,
+  "date": "2023-09-20",
+  "published": "2023-09-26",
+  "title": "257ª Reunião - 19-20 setembro, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom257-not20230920257.pdf",
+  "selic_before": 13.25,
+  "selic_after": 12.75
+ },
+ {
+  "number": 258,
+  "date": "2023-11-01",
+  "published": "2023-11-07",
+  "title": "258ª Reunião - 31 outubro - 1 novembro, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom258-not20231101258.pdf",
+  "selic_before": 12.75,
+  "selic_after": 12.25
+ },
+ {
+  "number": 259,
+  "date": "2023-12-13",
+  "published": "2023-12-19",
+  "title": "259ª Reunião - 12-13 dezembro, 2023",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom259-not20231213259.pdf",
+  "selic_before": 12.25,
+  "selic_after": 11.75
+ },
+ {
+  "number": 260,
+  "date": "2024-01-31",
+  "published": "2024-02-06",
+  "title": "260ª Reunião - 30-31 janeiro, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom260-not20240131260.pdf",
+  "selic_before": 11.75,
+  "selic_after": 11.25
+ },
+ {
+  "number": 261,
+  "date": "2024-03-20",
+  "published": "2024-03-26",
+  "title": "261ª Reunião - 19-20 março, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom261-not20240320261.pdf",
+  "selic_before": 11.25,
+  "selic_after": 10.75
+ },
+ {
+  "number": 262,
+  "date": "2024-05-08",
+  "published": "2024-05-14",
+  "title": "262ª Reunião - 7-8 maio, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom262-not20240508262.pdf",
+  "selic_before": 10.75,
+  "selic_after": 10.5
+ },
+ {
+  "number": 263,
+  "date": "2024-06-19",
+  "published": "2024-06-25",
+  "title": "263ª Reunião - 18-19 junho, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom263-not20240619263.pdf",
+  "selic_before": 10.5,
+  "selic_after": 10.5
+ },
+ {
+  "number": 264,
+  "date": "2024-07-31",
+  "published": "2024-08-06",
+  "title": "264ª Reunião - 30-31 julho, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom264-not20240731264.pdf",
+  "selic_before": 10.5,
+  "selic_after": 10.5
+ },
+ {
+  "number": 265,
+  "date": "2024-09-18",
+  "published": "2024-09-24",
+  "title": "265ª Reunião - 17-18 setembro, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom265-not20240918265.pdf",
+  "selic_before": 10.5,
+  "selic_after": 10.75
+ },
+ {
+  "number": 266,
+  "date": "2024-11-06",
+  "published": "2024-11-14",
+  "title": "266ª Reunião - 5-6 novembro, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom266-not20241106266.pdf",
+  "selic_before": 10.75,
+  "selic_after": 11.25
+ },
+ {
+  "number": 267,
+  "date": "2024-12-11",
+  "published": "2024-12-17",
+  "title": "267ª Reunião - 10-11 dezembro, 2024",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom267-not20241211267.pdf",
+  "selic_before": 11.25,
+  "selic_after": 12.25
+ },
+ {
+  "number": 268,
+  "date": "2025-01-29",
+  "published": "2025-02-04",
+  "title": "268ª Reunião - 28-29 janeiro, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom268-not20250129268.pdf",
+  "selic_before": 12.25,
+  "selic_after": 13.25
+ },
+ {
+  "number": 269,
+  "date": "2025-03-19",
+  "published": "2025-03-25",
+  "title": "269ª Reunião - 18-19 março, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom269-not20250319269.pdf",
+  "selic_before": 13.25,
+  "selic_after": 14.25
+ },
+ {
+  "number": 270,
+  "date": "2025-05-07",
+  "published": "2025-05-13",
+  "title": "270ª Reunião - 6-7 maio, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom270-not20250507270.pdf",
+  "selic_before": 14.25,
+  "selic_after": 14.75
+ },
+ {
+  "number": 271,
+  "date": "2025-06-18",
+  "published": "2025-06-24",
+  "title": "271ª Reunião - 17-18 junho, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom271-not20250618271.pdf",
+  "selic_before": 14.75,
+  "selic_after": 15.0
+ },
+ {
+  "number": 272,
+  "date": "2025-07-30",
+  "published": "2025-08-05",
+  "title": "272ª Reunião - 29-30 julho, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom272-not20250730272.pdf",
+  "selic_before": 15.0,
+  "selic_after": 15.0
+ },
+ {
+  "number": 273,
+  "date": "2025-09-17",
+  "published": "2025-09-23",
+  "title": "273ª Reunião - 16-17 setembro, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom273-not20250917273.pdf",
+  "selic_before": 15.0,
+  "selic_after": 15.0
+ },
+ {
+  "number": 274,
+  "date": "2025-11-05",
+  "published": "2025-11-11",
+  "title": "274ª Reunião - 4-5 novembro, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom274-not20251105274.pdf",
+  "selic_before": 15.0,
+  "selic_after": 15.0
+ },
+ {
+  "number": 275,
+  "date": "2025-12-10",
+  "published": "2025-12-16",
+  "title": "275ª Reunião - 9-10 dezembro, 2025",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom275-not20251210275.pdf",
+  "selic_before": 15.0,
+  "selic_after": 15.0
+ },
+ {
+  "number": 276,
+  "date": "2026-01-28",
+  "published": "2026-02-03",
+  "title": "276ª Reunião - 27-28 janeiro, 2026",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom276-not20260128276.pdf",
+  "selic_before": 15.0,
+  "selic_after": 15.0
+ },
+ {
+  "number": 277,
+  "date": "2026-03-18",
+  "published": "2026-03-24",
+  "title": "277ª Reunião - 17-18 março, 2026",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom277-not20260318277.pdf",
+  "selic_before": 15.0,
+  "selic_after": 14.75
+ },
+ {
+  "number": 278,
+  "date": "2026-04-29",
+  "published": "2026-05-05",
+  "title": "278ª Reunião - 28-29 abril, 2026",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom278-not20260429278.pdf",
+  "selic_before": 14.75,
+  "selic_after": 14.5
+ },
+ {
+  "number": 279,
+  "date": "2026-06-17",
+  "published": "2026-06-23",
+  "title": "279ª Reunião - 16-17 junho, 2026",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom279-not20260617279.pdf",
+  "selic_before": 14.5,
+  "selic_after": 14.25
+ },
+ {
+  "number": 280,
+  "date": "2026-08-05",
+  "published": "2026-08-11",
+  "title": "280ª Reunião - 4-5 agosto, 2026",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom280-not20260805280.pdf",
+  "selic_before": 14.25,
+  "selic_after": 14.0
+ },
+ {
+  "number": 281,
+  "date": "2026-09-16",
+  "published": "2026-09-22",
+  "title": "281ª Reunião - 15-16 setembro, 2026",
+  "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/Copom281-not20260916281.pdf",
+  "selic_before": 14.0,
+  "selic_after": 13.75
+ }
+]

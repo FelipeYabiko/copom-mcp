@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "copom-mcp"
+version = "0.1.0"
+description = "Servidor MCP com as atas do Copom e indicadores do Banco Central: busca com citações para assistentes de IA."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Felipe Yabiko Nogueira" }]
+requires-python = ">=3.11"
+keywords = ["mcp", "model-context-protocol", "copom", "banco-central", "rag", "claude"]
+classifiers = [
+  "Natural Language :: Portuguese (Brazilian)",
+  "Programming Language :: Python :: 3",
+  "Topic :: Office/Business :: Financial",
+]
+dependencies = ["mcp>=2.3,<3", "httpx>=0.27", "beautifulsoup4>=4.12", "pypdf>=5"]
+
+[project.optional-dependencies]
+semantic = ["fastembed>=0.5"]
+llm = ["anthropic>=1.17,<2"]
+dev = ["pytest>=8", "ruff>=0.6", "anthropic>=1.17,<2"]
+
+[project.scripts]
+copom-mcp = "copom_mcp.cli:main"
+
+[project.urls]
+Repository = "https://github.com/FelipeYabiko/copom-mcp"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/copom_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: testes que acessam a API do Banco Central (rodam só com -m network)"]
+addopts = "-m 'not network'"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

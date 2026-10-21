@@ -1,0 +1,25 @@
+{"id": "guerra-comercial-2018", "pergunta": "guerra comercial entre Estados Unidos e China", "gabarito": "continuidade da expansão do comércio internacional|choque de tarifas|elevação das tarifas à importação", "tipo": "paráfrase"}
+{"id": "apagao-2001", "pergunta": "racionamento de energia elétrica em 2001", "gabarito": "crise energética|racionamento", "tipo": "paráfrase"}
+{"id": "pandemia", "pergunta": "efeitos da pandemia de coronavírus na economia", "gabarito": "pandemia|Covid|coronavírus", "tipo": "direta"}
+{"id": "brexit", "pergunta": "saída do Reino Unido da União Europeia", "gabarito": "Brexit", "tipo": "paráfrase"}
+{"id": "oriente-medio", "pergunta": "conflitos armados no Oriente Médio", "gabarito": "Oriente Médio", "tipo": "direta"}
+{"id": "lehman-2008", "pergunta": "quebra do Lehman Brothers e crise financeira internacional de 2008", "gabarito": "crise financeira internacional|turbulência.{0,40}mercados financeiros internacionais|Lehman", "tipo": "paráfrase"}
+{"id": "russia-1998", "pergunta": "moratória da Rússia", "gabarito": "Rússia|russa", "tipo": "direta"}
+{"id": "argentina-2001", "pergunta": "crise da dívida argentina", "gabarito": "Argentina", "tipo": "direta"}
+{"id": "eleicao-2002", "pergunta": "incerteza eleitoral e pressão sobre o câmbio em 2002", "gabarito": "eleitora|processo sucessório", "tipo": "paráfrase"}
+{"id": "desancoragem", "pergunta": "expectativas de inflação se afastando da meta", "gabarito": "desancorage|desancorad", "tipo": "paráfrase"}
+{"id": "fiscal-credibilidade", "pergunta": "preocupação com as contas públicas e a sustentabilidade da dívida", "gabarito": "sustentabilidade da dívida|trajetória da dívida pública|estabilização da dívida", "tipo": "paráfrase"}
+{"id": "forward-guidance", "pergunta": "o Copom sinaliza os próximos passos da política monetária", "gabarito": "próximos passos|próximas reuniões|orientação futura|forward guidance", "tipo": "paráfrase"}
+{"id": "seca-alimentos", "pergunta": "alta nos preços dos alimentos por causa do clima", "gabarito": "(climátic|estiagem|seca|chuvas).{0,120}aliment|aliment.{0,120}(climátic|estiagem|seca|chuvas)", "tipo": "paráfrase"}
+{"id": "bandeira-tarifaria", "pergunta": "bandeira tarifária na conta de luz", "gabarito": "bandeira tarifária", "tipo": "direta"}
+{"id": "petroleo-choque", "pergunta": "choque no preço do petróleo", "gabarito": "preço.{0,30}petróleo|petróleo.{0,40}(alta|elevação|choque)", "tipo": "direta"}
+{"id": "mercado-trabalho-aquecido", "pergunta": "desemprego baixo e salários subindo", "gabarito": "mercado de trabalho (aquecido|apertado|robusto|resiliente)|taxa de desemprego.{0,60}(baixa|baix)", "tipo": "paráfrase"}
+{"id": "credito-direcionado", "pergunta": "crédito subsidiado dos bancos públicos reduz a potência dos juros", "gabarito": "crédito direcionado|crédito subsidiado|potência da política monetária", "tipo": "paráfrase"}
+{"id": "fed-juros", "pergunta": "aumento de juros pelo Federal Reserve nos Estados Unidos", "gabarito": "Federal Reserve|Fed\\b|FOMC|Federal Open Market", "tipo": "paráfrase"}
+{"id": "cambio-depreciacao", "pergunta": "desvalorização do real frente ao dólar", "gabarito": "depreciação (cambial|do real|da taxa de câmbio)|taxa de câmbio.{0,40}deprecia", "tipo": "paráfrase"}
+{"id": "reservas-internacionais", "pergunta": "reservas internacionais do Brasil", "gabarito": "reservas internacionais", "tipo": "direta"}
+{"id": "copa-olimpiadas", "pergunta": "efeito de grandes eventos esportivos sobre os preços", "gabarito": "Copa do Mundo|Olimpíada|Jogos Olímpicos", "tipo": "paráfrase"}
+{"id": "hiato-produto", "pergunta": "ociosidade da economia e capacidade produtiva", "gabarito": "ociosidade|hiato do produto", "tipo": "direta"}
+{"id": "inflacao-servicos", "pergunta": "inflação de serviços persistente", "gabarito": "inflação de serviços|preços de serviços", "tipo": "direta"}
+{"id": "dissidencia", "pergunta": "membros do Comitê que votaram contra a decisão da maioria", "gabarito": "votaram pela (manutenção|redução|elevação)|vencidos|votos? divergente|dissent", "tipo": "paráfrase"}
+{"id": "meta-continua", "pergunta": "mudança da meta de inflação para meta contínua", "gabarito": "meta contínua", "tipo": "direta"}

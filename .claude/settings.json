@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest *)",
+      "Bash(ruff *)",
+      "Bash(python evals/*)",
+      "Bash(copom-mcp buscar *)",
+      "Bash(git diff *)",
+      "Bash(git status)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": "python", "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/lint.py"], "timeout": 60 }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{ "type": "command", "command": "python", "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/tests_before_stop.py"], "timeout": 300 }]
+      }
+    ]
+  }
+}
