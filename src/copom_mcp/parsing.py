@@ -11,8 +11,9 @@ from bs4 import BeautifulSoup, NavigableString
 
 BLOCK_TAGS = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "li", "tr", "table", "body", "section", "blockquote"]
 
-# Parágrafo numerado: "12. O Comitê..." (a maioria das atas desde 1998 segue esse padrão).
-NUMBERED = re.compile(r"^(\d{1,3})\s?[.\-–](?:\s+|$)")
+# Parágrafo numerado: "12. O Comitê..." (a maioria das atas desde 1998 segue esse padrão). Algumas atas de 2009
+# colam o número no texto ("48.Conforme"): aceito só antes de maiúscula, para "1.241 bilhões" não virar parágrafo.
+NUMBERED = re.compile(r"^(\d{1,3})\s?[.\-–](?:\s+|$|(?=[A-ZÀ-Ý]))")
 # Seções das atas recentes: "A) Atualização da conjuntura econômica..."
 LETTER_HEADING = re.compile(r"^[A-H]\)\s+\S")
 # Cabeçalho e rodapé das páginas dos PDFs.
@@ -75,7 +76,9 @@ def segment(lines: list[str], headings: set[str] | None = None) -> list[Paragrap
     keys = {_key(h) for h in (headings or set())}
     lines = _merge_broken_headings(lines, keys)
     numbered = _segment_numbered(lines, keys)
-    if sum(1 for p in numbered if p.number > 0) >= 5:
+    # Conta números distintos, não trechos: uma lista "1." a "4." no meio de uma ata sem numeração (2002) fazia
+    # o "parágrafo 4" engolir o resto do texto, que, dividido em trechos longos, passava de 5.
+    if len({p.number for p in numbered if p.number > 0}) >= 5:
         return numbered
     return _segment_blocks(lines, keys)
 

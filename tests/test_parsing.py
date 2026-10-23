@@ -96,3 +96,33 @@ def test_trailing_footnotes_and_roster_are_not_paragraphs():
     assert body[-1].text.endswith("Fulano (presidente) e Beltrano.")
     assert "A menos de menção" not in " ".join(p.text for p in result)
     assert result[0].number == 0 and "Os membros do Copom analisaram" in result[0].text
+
+
+# Ata de 2002 sem numeração, com uma lista "1." a "4." no meio e texto longo depois dela (75ª reunião).
+OLD_WITH_LIST = (
+    "<a href='#a1'>Preços</a><a href='#a2'>Diretrizes</a><p>Data: 22.5.2002</p><p>Preços</p>"
+    "<p>O IPCA registrou variação de 0,21% em abril, com alta concentrada nos preços administrados por contrato.</p>"
+    "<p>1. Para todo 2002, projeta-se uma elevação de 3,3% no preço da gasolina ao consumidor final.</p>"
+    "<p>2. Para o reajuste das tarifas de energia elétrica residencial, projeta-se alta de 16,5% no ano.</p>"
+    "<p>3. Para o conjunto dos preços administrados por contrato, projeta-se variação de 9,2% em 2002.</p>"
+    "<p>4. A projeção para o spread de seis meses sobre a taxa Selic segue o modelo de estrutura a termo.</p>"
+    "<p>Diretrizes</p>"
+    + "".join(f"<p>Parágrafo {i} sem número, com análise da conjuntura. {'Texto longo. ' * 150}</p>" for i in range(5))
+)
+
+
+def test_numbered_list_in_unnumbered_minutes_does_not_swallow_the_text():
+    body = [p for p in parse(OLD_WITH_LIST) if p.number]
+    assert [p.number for p in body] == list(range(1, len(body) + 1))  # modo de blocos: nenhum número repetido
+    assert body[-1].section == "Diretrizes"
+
+
+# Atas de 2009 colam o número no texto em alguns parágrafos.
+GLUED = "".join(
+    f"<div>{n}.{' ' if n != 3 else ''}Conforme a pesquisa, o indicador {n} variou 1.241 pontos no mês.</div>"
+    for n in range(1, 6)
+)
+
+
+def test_number_glued_to_the_text():
+    assert [p.number for p in parse(GLUED) if p.number] == [1, 2, 3, 4, 5]
