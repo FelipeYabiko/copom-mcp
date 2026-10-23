@@ -582,7 +582,7 @@
   "title": "85ª Reunião",
   "pdf_url": null,
   "selic_before": 26.5,
-  "selic_after": 26.5
+  "selic_after": 26.0
  },
  {
   "number": 86,
@@ -960,7 +960,7 @@
   "title": "127ª Reunião",
   "pdf_url": null,
   "selic_before": 12.5,
-  "selic_after": 12.5
+  "selic_after": 12.0
  },
  {
   "number": 128,
@@ -1104,7 +1104,7 @@
   "title": "143ª Reunião",
   "pdf_url": null,
   "selic_before": 10.25,
-  "selic_after": 10.25
+  "selic_after": 9.25
  },
  {
   "number": 144,
@@ -1239,7 +1239,7 @@
   "title": "158ª Reunião",
   "pdf_url": null,
   "selic_before": 11.75,
-  "selic_after": 11.75
+  "selic_after": 12.0
  },
  {
   "number": 159,
@@ -1698,7 +1698,7 @@
   "title": "209ª Reunião",
   "pdf_url": "https://www.bcb.gov.br/content/copom/atascopom/COPOM209-not20170906209.pdf",
   "selic_before": 9.25,
-  "selic_after": 9.25
+  "selic_after": 8.25
  },
  {
   "number": 210,

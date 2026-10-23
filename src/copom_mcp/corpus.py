@@ -122,12 +122,16 @@ class BCBClient:
 
 
 def attach_decisions(meetings: Iterable[Meeting], selic: dict[str, float]) -> list[Meeting]:
-    """A decisão vale a partir do dia seguinte à reunião: compara a meta do dia com a do dia seguinte."""
+    """A decisão vale a partir do dia útil seguinte à reunião. Com feriado no meio (Corpus Christi, 7 de
+    setembro, Semana Santa), a nova meta só aparece na série dias depois. A busca vai até 5 dias à frente, o
+    pior caso (reunião na quarta, feriados na quinta e na sexta, fim de semana). Mais que isso não é decisão
+    da reunião: na época do viés (1999-2003), a meta podia mudar entre reuniões, como 7 dias após a 45ª."""
     result = []
     for m in meetings:
         day = date.fromisoformat(m.date)
         before = selic.get(m.date)
-        after = selic.get((day + timedelta(days=1)).isoformat())
+        following = [selic.get((day + timedelta(days=k)).isoformat()) for k in range(1, 6)]
+        after = next((v for v in following if v is not None and v != before), following[0])
         result.append(Meeting(**{**asdict(m), "selic_before": before, "selic_after": after}))
     return result
 
