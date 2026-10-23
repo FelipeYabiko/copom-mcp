@@ -81,6 +81,79 @@ async def test_indicator_uses_sgs(server):
     assert [p["valor"] for p in result.structured_content["pontos"]] == [4.22, 4.58]
 
 
+async def test_search_unknown_meeting_explains_the_valid_range(server):
+    async with Client(server) as client:
+        result = await client.call_tool("buscar_atas", {"consulta": "inflação", "reuniao": 999})
+    assert result.is_error and "da 30ª à 281ª" in result.content[0].text
+
+
+async def test_section_filter_ignores_accents_and_lists_sections(server):
+    async with Client(server) as client:
+        found = await client.call_tool("ler_ata", {"reuniao": 281, "secao": "decisao"})
+        missing = await client.call_tool("ler_ata", {"reuniao": 281, "secao": "riscos"})
+    assert [s["titulo"] for s in found.structured_content["secoes"]] == ["C) Decisão"]
+    assert missing.is_error and "Seções: A) Conjuntura; C) Decisão." in missing.content[0].text
+
+
+@pytest.mark.parametrize(
+    ("tool", "args", "message"),
+    [
+        ("buscar_atas", {"consulta": "inflação", "desde": "01/01/2025"}, "`desde`: '01/01/2025'"),
+        ("listar_reunioes", {"desde": "março de 2026"}, "`desde`: 'março de 2026'"),
+        ("listar_reunioes", {"ate": "2026-02-30"}, "`ate`: '2026-02-30'"),
+        ("listar_reunioes", {"desde": "2026", "ate": "2025"}, "`desde` (2026) é depois de `ate` (2025)"),
+        ("consultar_indicador", {"indicador": "ipca_12m", "inicio": "2026-13"}, "`inicio`: '2026-13'"),
+        ("consultar_indicador", {"indicador": "ipca_12m", "inicio": "2026", "fim": "2025"}, "é depois de `fim`"),
+    ],
+)
+async def test_invalid_dates_explain_the_format(server, tool, args, message):
+    async with Client(server) as client:
+        result = await client.call_tool(tool, args)
+    assert result.is_error and message in result.content[0].text
+
+
+async def test_month_and_year_filters(server):
+    async with Client(server) as client:
+        meetings = await client.call_tool("listar_reunioes", {"desde": "2026-08", "ate": "2026-08"})
+        series = await client.call_tool("consultar_indicador", {"indicador": "ipca_12m", "inicio": "2026-08"})
+    assert [m["reuniao"] for m in meetings.structured_content["reunioes"]] == [280]
+    assert len(series.structured_content["pontos"]) == 2
+
+
+def failing_sgs(kind: str):
+    def handler(request: httpx.Request) -> httpx.Response:
+        if kind == "timeout":
+            raise httpx.ReadTimeout("timed out", request=request)
+        if kind == "conexão":
+            raise httpx.ConnectError("connection refused", request=request)
+        if kind == "html":
+            return httpx.Response(200, text="<html>manutenção</html>")
+        if kind == "vazio":
+            return httpx.Response(404)
+        return httpx.Response(int(kind))
+
+    return handler
+
+
+@pytest.mark.parametrize(
+    ("kind", "message"),
+    [
+        ("500", "está com problemas (HTTP 500)"),
+        ("429", "limitou as consultas"),
+        ("timeout", "não respondeu a tempo"),
+        ("conexão", "Não foi possível conectar"),
+        ("html", "resposta inesperada"),
+        ("vazio", "Não há dados de IPCA acumulado em 12 meses"),
+    ],
+)
+async def test_sgs_failures_reach_the_client(meetings, chunks, kind, message):
+    http = httpx.Client(transport=httpx.MockTransport(failing_sgs(kind)))
+    server = create_server(meetings, chunks, http=http, semantic=False, analyses={})
+    async with Client(server) as client:
+        result = await client.call_tool("consultar_indicador", {"indicador": "ipca_12m", "inicio": "2026-01-01"})
+    assert result.is_error and message in result.content[0].text
+
+
 async def test_resources_and_prompts(server):
     async with Client(server) as client:
         meetings = json.loads((await client.read_resource("copom://reunioes")).contents[0].text)

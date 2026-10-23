@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+import calendar
 import logging
 import os
+import re
+import unicodedata
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Annotated, Literal
@@ -40,6 +43,8 @@ INDICATORS: dict[str, tuple[int, str, str]] = {
 }
 Indicator = Literal["selic_meta", "ipca", "ipca_12m", "igpm", "dolar"]
 DateFilter = Annotated[str | None, Field(description="AAAA, AAAA-MM ou AAAA-MM-DD")]
+DATE_FORMAT = re.compile(r"(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?")
+DATE_HELP = "Use AAAA, AAAA-MM ou AAAA-MM-DD (ex.: 2025, 2025-03 ou 2025-03-19)."
 
 
 class Citation(BaseModel):
@@ -154,7 +159,10 @@ def create_server(
         As atas usam linguagem técnica: se a primeira busca não trouxer o tema, tente o vocabulário do
         Copom (ex.: "choque de tarifas" em vez de "guerra comercial", "desancoragem das expectativas" em
         vez de "inflação fora do controle") ou faça várias buscas curtas."""
-        hits = engine.search(consulta, limite, _start(desde), _end(ate), reuniao)
+        if reuniao is not None:
+            get_meeting(reuniao)
+        since, until = _period(desde, ate)
+        hits = engine.search(consulta, limite, _iso(since), _iso(until), reuniao)
         return SearchResult(
             consulta=consulta,
             modo_de_busca=engine.mode,
@@ -179,10 +187,17 @@ def create_server(
     ) -> Minutes:
         """Devolve o texto de uma ata, organizado por seção e parágrafo, com a decisão de juros da reunião."""
         meeting = get_meeting(reuniao)
+        paragraphs = [c for c in chunks if c.meeting == reuniao and c.paragraph > 0]
+        if secao is not None:
+            wanted = _fold(secao.strip())
+            selected = [c for c in paragraphs if wanted in _fold(c.section)]
+            if not selected:
+                titles = "; ".join(dict.fromkeys(c.section for c in paragraphs))
+                raise ToolError(f"A ata da {reuniao}ª reunião não tem seção com '{secao}'. Seções: {titles}.")
+            paragraphs = selected
         sections: dict[str, list[MinutesParagraph]] = {}
-        for c in (c for c in chunks if c.meeting == reuniao and c.paragraph > 0):
-            if secao is None or secao.lower() in c.section.lower():
-                sections.setdefault(c.section, []).append(MinutesParagraph(numero=c.paragraph, texto=c.text))
+        for c in paragraphs:
+            sections.setdefault(c.section, []).append(MinutesParagraph(numero=c.paragraph, texto=c.text))
         return Minutes(
             reuniao=summary(meeting),
             secoes=[MinutesSection(titulo=t, paragrafos=p) for t, p in sections.items()],
@@ -195,7 +210,8 @@ def create_server(
         decisao: Literal["alta", "corte", "manutenção"] | None = None,
     ) -> MeetingList:
         """Lista reuniões do Copom com a meta Selic antes e depois e a decisão (alta, corte ou manutenção)."""
-        since, until = _start(desde), _end(ate)
+        start, end = _period(desde, ate)
+        since, until = _iso(start), _iso(end)
         selected = [
             summary(m)
             for m in meetings
@@ -211,20 +227,47 @@ def create_server(
     )
     def consultar_indicador(
         indicador: Indicator,
-        inicio: Annotated[str, Field(description="AAAA-MM-DD")],
-        fim: Annotated[str | None, Field(description="AAAA-MM-DD; padrão: hoje")] = None,
+        inicio: Annotated[str, Field(description="AAAA, AAAA-MM ou AAAA-MM-DD")],
+        fim: Annotated[str | None, Field(description="AAAA, AAAA-MM ou AAAA-MM-DD; padrão: hoje")] = None,
     ) -> Series:
         """Série oficial do Banco Central (SGS) entre duas datas. Séries diárias longas (mais de 400
         pontos) voltam com o último valor de cada mês, para caber na conversa."""
         code, name, unit = INDICATORS[indicador]
-        try:
-            start = date.fromisoformat(inicio)
-            end = date.fromisoformat(fim) if fim else date.today()
-        except ValueError as exc:
-            raise ToolError(f"Data inválida ({exc}). Use AAAA-MM-DD.") from exc
+        start = _parse_date(inicio, "inicio")
+        end = _parse_date(fim, "fim", end=True) if fim else date.today()
         if start > end:
-            raise ToolError("`inicio` precisa ser anterior a `fim`.")
-        points = _fetch_series(http, code, start, end)
+            raise ToolError(f"`inicio` ({inicio}) é depois de `fim` ({fim or 'hoje'}).")
+        try:
+            points = _fetch_series(http, code, start, end)
+        except httpx.TimeoutException as exc:
+            raise ToolError(
+                "A API do Banco Central (SGS) não respondeu a tempo. Tente de novo em instantes ou com um "
+                "período menor."
+            ) from exc
+        except httpx.TransportError as exc:
+            raise ToolError(
+                f"Não foi possível conectar à API do Banco Central (SGS): {exc}. Tente de novo em instantes."
+            ) from exc
+        except httpx.HTTPStatusError as exc:
+            status = exc.response.status_code
+            if status == 429:
+                detail = "limitou as consultas (HTTP 429). Espere alguns segundos e tente de novo."
+            elif status >= 500:
+                detail = f"está com problemas (HTTP {status}). Tente de novo em alguns minutos."
+            else:
+                detail = f"recusou a consulta (HTTP {status})."
+            raise ToolError(f"A API do Banco Central (SGS) {detail}") from exc
+        except (ValueError, KeyError, TypeError) as exc:  # JSON inválido ou fora do formato da série
+            raise ToolError(
+                f"A API do Banco Central (SGS) devolveu uma resposta inesperada para a série {code}. "
+                "Tente de novo em instantes."
+            ) from exc
+        if not points:
+            raise ToolError(
+                f"Não há dados de {name} entre {start} e {end}. O período pode ser anterior ao início da série "
+                "ou curto demais: séries diárias, como o dólar, não têm fins de semana e feriados, e as mensais "
+                "(IPCA, IGP-M) saem cerca de um mês depois. Amplie o período."
+            )
         frequency = "original"
         if len(points) > 400:
             monthly: dict[str, SeriesPoint] = {}
@@ -287,16 +330,38 @@ def create_server(
     return server
 
 
-def _start(value: str | None) -> str | None:
-    if not value:
-        return None
-    return {4: f"{value}-01-01", 7: f"{value}-01"}.get(len(value), value)
+def _parse_date(value: str, param: str, end: bool = False) -> date:
+    """`2025`, `2025-03` ou `2025-03-19`. Ano e mês viram o primeiro dia do período, ou o último se `end`."""
+    match = DATE_FORMAT.fullmatch(value.strip())
+    if match:
+        year, month, day = match.groups()
+        try:
+            if day:
+                return date(int(year), int(month), int(day))
+            if month:
+                last = calendar.monthrange(int(year), int(month))[1]
+                return date(int(year), int(month), last if end else 1)
+            return date(int(year), 12, 31) if end else date(int(year), 1, 1)
+        except ValueError:  # mês 13, 30 de fevereiro
+            pass
+    raise ToolError(f"Data inválida em `{param}`: '{value}'. {DATE_HELP}")
 
 
-def _end(value: str | None) -> str | None:
-    if not value:
-        return None
-    return {4: f"{value}-12-31", 7: f"{value}-31"}.get(len(value), value)
+def _period(desde: str | None, ate: str | None) -> tuple[date | None, date | None]:
+    since = _parse_date(desde, "desde") if desde else None
+    until = _parse_date(ate, "ate", end=True) if ate else None
+    if since and until and since > until:
+        raise ToolError(f"`desde` ({desde}) é depois de `ate` ({ate}).")
+    return since, until
+
+
+def _iso(value: date | None) -> str | None:
+    return value.isoformat() if value else None
+
+
+def _fold(text: str) -> str:
+    """Minúsculas e sem acentos: "decisao" encontra a seção "Decisão de política monetária"."""
+    return "".join(c for c in unicodedata.normalize("NFKD", text.casefold()) if not unicodedata.combining(c))
 
 
 def _fetch_series(http: httpx.Client, code: int, start: date, end: date) -> list[SeriesPoint]:
