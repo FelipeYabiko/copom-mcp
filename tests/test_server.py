@@ -6,6 +6,8 @@ import sys
 import httpx
 import pytest
 from mcp import Client, StdioServerParameters
+from mcp.shared.exceptions import MCPError
+from mcp.types import INVALID_PARAMS
 
 from copom_mcp.extract import FEW_SHOT_ANSWER
 from copom_mcp.server import create_server
@@ -178,3 +180,61 @@ async def test_real_server_over_stdio():
     async with Client(params) as client:
         result = await client.call_tool("listar_reunioes", {"desde": "2020-08-01", "ate": "2020-08-31"})
     assert result.structured_content["reunioes"][0]["reuniao"] == 232
+
+
+async def test_list_meetings_limit_keeps_the_most_recent(server):
+    async with Client(server) as client:
+        result = await client.call_tool("listar_reunioes", {"limite": 2})
+    data = result.structured_content
+    assert data["total"] == 4 and [m["reuniao"] for m in data["reunioes"]] == [280, 281]
+
+
+def daily_selic(request: httpx.Request) -> httpx.Response:
+    values = [15.0, 15.0, 15.0, 14.75, 14.75, 14.5, 14.5]
+    return httpx.Response(200, json=[{"data": f"0{d + 1}/03/2026", "valor": str(v)} for d, v in enumerate(values)])
+
+
+async def test_selic_target_returns_only_the_changes(meetings, chunks):
+    http = httpx.Client(transport=httpx.MockTransport(daily_selic))
+    server = create_server(meetings, chunks, http=http, semantic=False, analyses={})
+    async with Client(server) as client:
+        result = await client.call_tool("consultar_indicador", {"indicador": "selic_meta", "inicio": "2026-03"})
+    points = [(p["data"][-2:], p["valor"]) for p in result.structured_content["pontos"]]
+    assert points == [("01", 15.0), ("04", 14.75), ("06", 14.5), ("07", 14.5)]
+    assert result.structured_content["periodicidade"].startswith("mudanças")
+
+
+def dollar_by_window(request: httpx.Request) -> httpx.Response:
+    year = request.url.params["dataInicial"][-4:]
+    return httpx.Response(200, json=[{"data": f"02/01/{year}", "valor": year[-2:]}])
+
+
+async def test_long_series_keeps_the_windows_in_order(meetings, chunks):
+    http = httpx.Client(transport=httpx.MockTransport(dollar_by_window))
+    server = create_server(meetings, chunks, http=http, semantic=False, analyses={})
+    async with Client(server) as client:
+        result = await client.call_tool("consultar_indicador", {"indicador": "dolar", "inicio": "2000", "fim": "2026"})
+    years = [p["data"][:4] for p in result.structured_content["pontos"]]
+    assert years == sorted(years) and len(years) == 6  # 6 janelas de 5 anos, buscadas em paralelo
+
+
+@pytest.mark.parametrize(
+    ("name", "args", "message"),
+    [
+        ("analisar_reuniao", {}, "Falta o argumento reuniao"),
+        ("analisar_reuniao", {"reuniao": "xyz"}, "Reunião 'xyz' não encontrada. Há atas da 30ª à 281ª"),
+        ("comparar_reunioes", {"reuniao_a": "280", "reuniao_b": "999"}, "Reunião '999' não encontrada"),
+        ("prompt_inexistente", {}, "Prompt desconhecido"),
+    ],
+)
+async def test_prompt_errors_explain_the_argument(server, name, args, message):
+    async with Client(server) as client:
+        with pytest.raises(MCPError) as error:
+            await client.get_prompt(name, args)
+    assert error.value.code == INVALID_PARAMS and message in error.value.message
+
+
+async def test_prompt_accepts_ordinal(server):
+    async with Client(server) as client:
+        prompt = await client.get_prompt("analisar_reuniao", {"reuniao": "281ª"})
+    assert prompt.messages[0].content.text.startswith("Analise a 281ª reunião")

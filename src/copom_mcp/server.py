@@ -8,14 +8,16 @@ import logging
 import os
 import re
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 from pathlib import Path
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 
 import httpx
 from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ResourceNotFoundError, ToolError
-from mcp.types import ToolAnnotations
+from mcp.shared.exceptions import MCPError
+from mcp.types import INVALID_PARAMS, ToolAnnotations
 from pydantic import BaseModel, Field
 
 from .corpus import SGS_API, Chunk, Meeting, load_corpus, user_data_dir
@@ -109,6 +111,20 @@ class Series(BaseModel):
     fonte: str
 
 
+class CopomServer(MCPServer):
+    """Com argumento de prompt faltando, o SDK responde só "Internal server error". Aqui a checagem vem antes,
+    como erro de parâmetro que diz o que falta."""
+
+    async def get_prompt(self, name: str, arguments: dict[str, Any] | None = None, context: Any = None) -> Any:
+        prompt = next((p for p in await self.list_prompts() if p.name == name), None)
+        if prompt is None:
+            raise MCPError(INVALID_PARAMS, f"Prompt desconhecido: {name}.")
+        missing = [a.name for a in prompt.arguments or [] if a.required and a.name not in (arguments or {})]
+        if missing:
+            raise MCPError(INVALID_PARAMS, f"Falta o argumento {', '.join(missing)} do prompt `{name}`.")
+        return await super().get_prompt(name, arguments, context)
+
+
 def create_server(
     meetings: list[Meeting] | None = None,
     chunks: list[Chunk] | None = None,
@@ -127,7 +143,7 @@ def create_server(
     http = http or httpx.Client(timeout=30)
     log.info("Corpus: %d reuniões, %d parágrafos. Busca: %s.", len(meetings), len(chunks), engine.mode)
 
-    server = MCPServer(name="copom-mcp", title="Atas do Copom", instructions=INSTRUCTIONS, version="0.1.0")
+    server = CopomServer(name="copom-mcp", title="Atas do Copom", instructions=INSTRUCTIONS, version="0.1.0")
     read_only = ToolAnnotations(read_only_hint=True, open_world_hint=False)
 
     def summary(m: Meeting) -> MeetingSummary:
@@ -211,8 +227,12 @@ def create_server(
         desde: DateFilter = None,
         ate: DateFilter = None,
         decisao: Literal["alta", "corte", "manutenção"] | None = None,
+        limite: Annotated[int, Field(ge=1, le=300, description="Máximo de reuniões, as mais recentes")] = 50,
     ) -> MeetingList:
-        """Lista reuniões do Copom com a meta Selic antes e depois e a decisão (alta, corte ou manutenção)."""
+        """Lista reuniões do Copom com a meta Selic antes e depois e a decisão (alta, corte ou manutenção).
+
+        Devolve as `limite` reuniões mais recentes que atendem aos filtros; `total` conta todas. Para períodos
+        antigos, use `desde`/`ate` em vez de aumentar o limite."""
         start, end = _period(desde, ate)
         since, until = _iso(start), _iso(end)
         selected = [
@@ -222,7 +242,7 @@ def create_server(
             and (until is None or m.date <= until)
             and (decisao is None or m.decision == decisao)
         ]
-        return MeetingList(total=len(selected), reunioes=selected)
+        return MeetingList(total=len(selected), reunioes=selected[-limite:])
 
     @server.tool(
         title="Consultar indicador do Banco Central",
@@ -272,7 +292,12 @@ def create_server(
                 "(IPCA, IGP-M) saem cerca de um mês depois. Amplie o período."
             )
         frequency = "original"
-        if len(points) > 400:
+        if indicador == "selic_meta":
+            # A meta só muda nas reuniões: a série diária repete o mesmo valor por semanas.
+            last = len(points) - 1
+            points = [p for i, p in enumerate(points) if i in (0, last) or p.valor != points[i - 1].valor]
+            frequency = "mudanças (primeiro dia, cada mudança da meta e último dia)"
+        elif len(points) > 400:
             monthly: dict[str, SeriesPoint] = {}
             for p in points:
                 monthly[p.data[:7]] = p
@@ -304,7 +329,7 @@ def create_server(
     @server.resource("copom://reunioes", name="reunioes", mime_type="application/json")
     def resource_meetings() -> str:
         """Todas as reuniões do Copom com as decisões de juros."""
-        return MeetingList(total=len(meetings), reunioes=[summary(m) for m in meetings]).model_dump_json(indent=1)
+        return MeetingList(total=len(meetings), reunioes=[summary(m) for m in meetings]).model_dump_json()
 
     @server.resource("copom://atas/{reuniao}", name="ata", mime_type="text/markdown")
     def resource_minutes(reuniao: str) -> str:
@@ -319,9 +344,18 @@ def create_server(
             lines += [f"{p.numero}. {p.texto}\n" for p in section.paragrafos]
         return "\n".join(lines)
 
+    def prompt_meeting(value: str) -> int:
+        """Argumento de prompt chega como texto: aceita "281" ou "281ª"."""
+        text = value.strip().rstrip("ªº")
+        if not text.isdigit() or int(text) not in by_number:
+            first, last = min(by_number), max(by_number)
+            raise MCPError(INVALID_PARAMS, f"Reunião '{value}' não encontrada. Há atas da {first}ª à {last}ª reunião.")
+        return int(text)
+
     @server.prompt(title="Analisar uma reunião do Copom")
     def analisar_reuniao(reuniao: str) -> str:
         """Roteiro para analisar a decisão e o tom de uma reunião."""
+        reuniao = str(prompt_meeting(reuniao))
         return (
             f"Analise a {reuniao}ª reunião do Copom. Use `ler_ata` para ler a ata e `listar_reunioes` para "
             "comparar com a reunião anterior. Explique: (1) a decisão de juros, (2) os principais argumentos, "
@@ -331,6 +365,7 @@ def create_server(
     @server.prompt(title="Comparar duas reuniões do Copom")
     def comparar_reunioes(reuniao_a: str, reuniao_b: str) -> str:
         """Roteiro para comparar a comunicação de duas reuniões."""
+        reuniao_a, reuniao_b = str(prompt_meeting(reuniao_a)), str(prompt_meeting(reuniao_b))
         return (
             f"Compare a {reuniao_a}ª e a {reuniao_b}ª reuniões do Copom. Leia as duas atas com `ler_ata`, aponte "
             "o que mudou no diagnóstico, nos riscos e na orientação futura, e cite os parágrafos de cada uma."
@@ -374,25 +409,33 @@ def _fold(text: str) -> str:
 
 
 def _fetch_series(http: httpx.Client, code: int, start: date, end: date) -> list[SeriesPoint]:
-    points: list[SeriesPoint] = []
+    windows = []
     current = start
     while current <= end:  # séries diárias: no máximo 10 anos por consulta
         window_end = min(current + timedelta(days=365 * 5), end)
+        windows.append((current, window_end))
+        current = window_end + timedelta(days=1)
+
+    def fetch(window: tuple[date, date]) -> list[SeriesPoint]:
         response = http.get(
             SGS_API.format(code=code),
             params={
                 "formato": "json",
-                "dataInicial": current.strftime("%d/%m/%Y"),
-                "dataFinal": window_end.strftime("%d/%m/%Y"),
+                "dataInicial": window[0].strftime("%d/%m/%Y"),
+                "dataFinal": window[1].strftime("%d/%m/%Y"),
             },
         )
-        if response.status_code != 404:  # 404 = sem dados no período
-            response.raise_for_status()
-            for row in response.json():
-                d, m, y = row["data"].split("/")
-                points.append(SeriesPoint(data=f"{y}-{m}-{d}", valor=float(row["valor"])))
-        current = window_end + timedelta(days=1)
-    return points
+        if response.status_code == 404:  # sem dados no período
+            return []
+        response.raise_for_status()
+        return [
+            SeriesPoint(data="-".join(reversed(row["data"].split("/"))), valor=float(row["valor"]))
+            for row in response.json()
+        ]
+
+    # Em paralelo: o dólar de 2010 a 2026 são 4 janelas, e uma depois da outra levavam ~15 s.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return [p for part in pool.map(fetch, windows) for p in part]
 
 
 def _semantic_available() -> bool:

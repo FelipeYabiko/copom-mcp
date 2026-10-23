@@ -64,7 +64,7 @@ palavras-chave até o índice ficar pronto (o campo `modo_de_busca` mostra o est
 | --- | --- |
 | `buscar_atas` | Busca parágrafos sobre um tema, com filtros de período e reunião. Devolve trechos prontos para citar |
 | `ler_ata` | Texto de uma ata por seção e parágrafo, com a decisão de juros |
-| `listar_reunioes` | Reuniões com a meta Selic antes e depois e a decisão (alta, corte ou manutenção) |
+| `listar_reunioes` | Reuniões com a meta Selic antes e depois e a decisão (alta, corte ou manutenção); as 50 mais recentes, ou `limite` |
 | `consultar_indicador` | Séries oficiais do BCB: meta Selic, IPCA (mensal e 12 meses), IGP-M e dólar PTAX |
 | `analise_reuniao` | Análise estruturada gerada por IA (Gemini 3.5 Flash-Lite): tom, fatores, riscos e orientação futura |
 
