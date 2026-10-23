@@ -126,6 +126,10 @@ Para reproduzir: `python evals/run_busca.py` (adicione `--semantica --modelo <no
 compara a decisão, a nova Selic e a variação com a série oficial do BCB, além de somar custo, uso de cache e
 latência. A ata usada como exemplo no prompt fica fora da conta, para não inflar o resultado.
 
+Com `--lote`, o id do lote fica em `evals/results/lote-pendente.json` assim que ele é criado. Se o programa
+parar durante a espera (até 24 h), o lote segue na Anthropic: rodar de novo com `--lote` retoma o mesmo lote
+em vez de criar e pagar outro, e o modo sem `--lote` se recusa a rodar enquanto houver um pendente.
+
 **Testar sem custo.** A mesma extração roda em provedores com plano gratuito, pela API compatível com a da
 OpenAI: mesmo schema e mesmas instruções, com a resposta validada pelo Pydantic e uma nova tentativa quando
 vem fora do schema. Sem prompt caching nem Batch API, que são da Anthropic.
