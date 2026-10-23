@@ -8,7 +8,8 @@ Central. Python 3.11+, SDK `mcp` 2.x (`MCPServer`, não o antigo `FastMCP`).
 - Testes: `pytest -q` (não acessam a internet; os marcados `network` só rodam com `-m network`)
 - Lint e formatação: `ruff check . && ruff format --check .`
 - Eval de busca: `python evals/run_busca.py` (adicione `--semantica` para a busca híbrida)
-- Eval de extração: `python evals/run_extracao.py` (precisa de `copom-mcp extrair` antes)
+- Eval de extração: `python evals/run_extracao.py` (precisa de `copom-mcp extrair` antes; para um provedor
+  gratuito, `--analises evals/results/analises-groq.json`)
 - Servidor local: `copom-mcp` (stdio) ou `copom-mcp servir --http`
 - Busca pelo terminal: `copom-mcp buscar "inflação de serviços"`
 
@@ -20,6 +21,8 @@ Central. Python 3.11+, SDK `mcp` 2.x (`MCPServer`, não o antigo `FastMCP`).
 - `src/copom_mcp/search.py`: BM25 próprio + embeddings opcionais (fastembed), combinados por RRF.
 - `src/copom_mcp/server.py`: ferramentas, recursos e prompts MCP. As saídas são modelos Pydantic.
 - `src/copom_mcp/extract.py`: extração estruturada com o Claude (few-shot, cache, Batch API).
+- `src/copom_mcp/providers.py`: a mesma extração em provedores gratuitos compatíveis com a OpenAI (Groq,
+  Gemini, OpenRouter), via `httpx`. Nunca usar o SDK da OpenAI aqui: o projeto não depende dele.
 - `src/copom_mcp/data/`: corpus gerado por `scripts/build_corpus.py`. Nunca edite à mão.
 - `evals/`: perguntas com gabarito e scripts de avaliação.
 

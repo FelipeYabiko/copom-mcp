@@ -235,4 +235,5 @@ def load_analyses(path: Path) -> dict[int, AnaliseAta]:
 
 def save_analyses(path: Path, analyses: dict[int, AnaliseAta]) -> None:
     payload = {str(k): v.model_dump() for k, v in sorted(analyses.items())}
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
