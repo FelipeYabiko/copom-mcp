@@ -55,7 +55,8 @@ claude mcp add copom -- uvx --from git+https://github.com/FelipeYabiko/copom-mcp
 
 **Busca semântica (opcional).** A instalação padrão usa só palavras-chave e é leve. Para a busca híbrida, use
 `copom-mcp[semantic]` no lugar de `copom-mcp`. Na primeira vez, o servidor baixa um modelo de ~220 MB e gera os
-embeddings, o que leva alguns minutos.
+embeddings, o que leva alguns minutos, em segundo plano: ele responde ao cliente na hora e busca só por
+palavras-chave até o índice ficar pronto (o campo `modo_de_busca` mostra o estado).
 
 ## Ferramentas
 

@@ -1,3 +1,6 @@
+import threading
+
+from copom_mcp.corpus import Chunk
 from copom_mcp.search import BM25, SearchEngine, stem, tokenize
 
 
@@ -45,3 +48,45 @@ def test_hybrid_search_fuses_rankings(chunks):
     # O que as duas buscas concordam vem primeiro; o que só a semântica achou também entra.
     assert ids[0] == "279-2" and "280-1" in ids
     assert engine.mode.startswith("híbrida")
+
+
+def test_semantic_alone_returns_nothing_when_no_word_is_in_the_corpus(chunks):
+    engine = SearchEngine(chunks, semantic=FakeSemantic(chunks, favorite="280-1"))
+    assert engine.search("xyzqwerty") == []
+    assert engine.search("de a o") == []  # só stopwords
+
+
+def test_glossary_entries_are_not_searched(chunks):
+    glossary = [
+        Chunk(68, "2002-02-20", "Diretrizes", 3, "Glossário a.a. ao ano a.m. ao mês"),
+        Chunk(68, "2002-02-20", "Diretrizes", 4, "IPCAÍndice Nacional de Preços ao Consumidor Amplo"),
+        Chunk(69, "2002-03-20", "Glossário", 9, "IGP-MÍndice Geral de Preços do Mercado"),
+    ]
+    engine = SearchEngine([*chunks, *glossary])
+    assert engine.search("Índice Consumidor Amplo") == []
+    assert engine.search("inflação") != []
+
+
+def test_semantic_index_loads_in_background(chunks):
+    ready = threading.Event()
+
+    def build():
+        ready.wait(5)
+        return FakeSemantic(chunks, favorite="280-1")
+
+    engine = SearchEngine(chunks)
+    thread = engine.load_semantic(build)
+    assert "carregando" in engine.mode
+    assert [h.chunk.id for h in engine.search("petróleo")] == ["279-2"]  # só BM25 por enquanto
+    ready.set()
+    thread.join(5)
+    assert engine.mode.startswith("híbrida") and "280-1" in [h.chunk.id for h in engine.search("petróleo")]
+
+
+def test_failed_semantic_index_falls_back_to_bm25(chunks):
+    def build():
+        raise OSError("sem rede para baixar o modelo")
+
+    engine = SearchEngine(chunks)
+    engine.load_semantic(build).join(5)
+    assert engine.mode == "palavras-chave (BM25)"

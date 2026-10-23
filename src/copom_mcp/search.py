@@ -5,9 +5,10 @@ from __future__ import annotations
 import logging
 import math
 import re
+import threading
 import unicodedata
 from collections import Counter, defaultdict
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -108,10 +109,36 @@ class SearchEngine:
         self.chunks = list(chunks)
         self.bm25 = BM25([tokenize(f"{c.section} {c.text}") for c in self.chunks])
         self.semantic = semantic
+        self.loading = False
+        self.glossary = _glossary(self.chunks)
 
     @property
     def mode(self) -> str:
-        return "híbrida (BM25 + embeddings)" if self.semantic else "palavras-chave (BM25)"
+        if self.semantic:
+            return "híbrida (BM25 + embeddings)"
+        if self.loading:
+            return "palavras-chave (BM25); a busca semântica ainda está carregando"
+        return "palavras-chave (BM25)"
+
+    def load_semantic(self, build: Callable[[], SemanticIndex | None]) -> threading.Thread:
+        """Carrega o índice semântico em outra thread. Na primeira vez, baixar o modelo e gerar os embeddings
+        leva minutos, e o cliente MCP pode desistir de esperar o servidor iniciar. Até o índice ficar pronto,
+        a busca usa só o BM25."""
+
+        def run() -> None:
+            try:
+                self.semantic = build()
+                if self.semantic:
+                    log.info("Busca híbrida pronta.")
+            except Exception:
+                log.exception("Falha ao carregar a busca semântica; seguindo só com BM25.")
+            finally:
+                self.loading = False
+
+        self.loading = True
+        thread = threading.Thread(target=run, name="indice-semantico", daemon=True)
+        thread.start()
+        return thread
 
     def search(
         self,
@@ -128,14 +155,18 @@ class SearchEngine:
             and (until is None or c.date <= until)
             and (meeting is None or c.meeting == meeting)
             and c.paragraph > 0  # o preâmbulo (lista de presentes) não entra na busca
+            and i not in self.glossary
         ]
         allowed_set = set(allowed)
         rankings: dict[str, list[int]] = {}
 
         bm25 = self.bm25.scores(tokenize(query))
         rankings["bm25"] = sorted((i for i in bm25 if i in allowed_set), key=lambda i: -bm25[i])[:200]
-        if self.semantic:
-            similarity = self.semantic.scores(query)
+        semantic = self.semantic
+        # Se nenhuma palavra da consulta aparece no corpus ("", "xyzqwerty"), a busca semântica sozinha devolve
+        # vizinhos ao acaso. Similaridade mínima não resolve: consultas boas e ruins ficam na mesma faixa.
+        if semantic and bm25:
+            similarity = semantic.scores(query)
             rankings["semântica"] = sorted(allowed, key=lambda i: -similarity[i])[:200]
 
         # Reciprocal Rank Fusion: soma 1/(k + posição) de cada lista. Não depende da escala dos scores.
@@ -147,6 +178,22 @@ class SearchEngine:
                 sources[i].append(name)
         best = sorted(fused, key=lambda i: -fused[i])[:limit]
         return [Hit(self.chunks[i], round(fused[i], 5), tuple(sources[i])) for i in best]
+
+
+def _glossary(chunks: Sequence[Chunk]) -> set[int]:
+    """Glossários de siglas das atas de 2001-2003 ("IRRFImposto sobre a Renda Retido na Fonte") não são
+    conteúdo. Quase todos ficam na seção "Glossário"; na 68ª, o título ficou no texto do parágrafo, e o
+    glossário vai dali até o fim da seção."""
+    skip: set[int] = set()
+    inside: tuple[int, str] | None = None
+    for i, c in enumerate(chunks):
+        if normalize(c.text).startswith("glossario "):
+            inside = (c.meeting, c.section)
+        if normalize(c.section).startswith("glossario") or inside == (c.meeting, c.section):
+            skip.add(i)
+        else:
+            inside = None
+    return skip
 
 
 def _unit(matrix, np):

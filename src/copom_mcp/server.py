@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import calendar
+import importlib.util
 import logging
 import os
 import re
@@ -120,7 +121,9 @@ def create_server(
     if analyses is None:
         analyses = load_analyses(Path(__file__).parent / "data" / "analises.json")
     by_number = {m.number: m for m in meetings}
-    engine = SearchEngine(chunks, _semantic_index(chunks) if semantic is not False else None)
+    engine = SearchEngine(chunks)
+    if semantic is not False and _semantic_available():
+        engine.load_semantic(lambda: SemanticIndex(chunks, user_data_dir()))
     http = http or httpx.Client(timeout=30)
     log.info("Corpus: %d reuniões, %d parágrafos. Busca: %s.", len(meetings), len(chunks), engine.mode)
 
@@ -392,11 +395,10 @@ def _fetch_series(http: httpx.Client, code: int, start: date, end: date) -> list
     return points
 
 
-def _semantic_index(chunks: list[Chunk]) -> SemanticIndex | None:
+def _semantic_available() -> bool:
     if os.environ.get("COPOM_MCP_SEMANTIC", "1") == "0":
-        return None
-    try:
-        return SemanticIndex(chunks, user_data_dir())
-    except ImportError:
+        return False
+    if importlib.util.find_spec("fastembed") is None:
         log.info("fastembed não instalado: usando só BM25. Para busca híbrida: pip install 'copom-mcp[semantic]'.")
-        return None
+        return False
+    return True
