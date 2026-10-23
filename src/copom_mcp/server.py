@@ -285,9 +285,15 @@ def create_server(
 
     @server.tool(title="Análise estruturada de uma reunião", annotations=read_only)
     def analise_reuniao(reuniao: Annotated[int, Field(description="Número da reunião")]) -> AnaliseAta:
-        """Análise gerada por IA de uma ata: decisão, tom (duro/neutro/brando), fatores, riscos e orientação
-        futura, com os parágrafos citados. Para conferir, leia a ata com `ler_ata`."""
-        get_meeting(reuniao)
+        """Análise gerada por IA (Gemini 3.5 Flash-Lite) de uma ata: decisão, tom (duro/neutro/brando),
+        fatores, riscos e orientação futura, com os parágrafos citados. Tom e fatores são interpretação do
+        modelo: para conferir, leia a ata com `ler_ata`. Para os números oficiais (Selic antes e depois,
+        variação), use `listar_reunioes`."""
+        if get_meeting(reuniao).decision is None:
+            raise ToolError(
+                f"A {reuniao}ª reunião é anterior à meta Selic (mar/1999) e não tem análise estruturada. "
+                "Use `ler_ata` e analise o texto diretamente."
+            )
         if reuniao not in analyses:
             raise ToolError(f"Ainda não há análise da {reuniao}ª reunião. Use `ler_ata` e analise o texto diretamente.")
         return analyses[reuniao]

@@ -79,7 +79,7 @@ if __name__ == "__main__":
         "--analises",
         type=Path,
         default=ANALYSES,
-        help="Arquivo de análises (ex.: evals/results/analises-groq.json). Padrão: o do pacote (Claude).",
+        help="Arquivo de análises (ex.: evals/results/analises-groq.json). Padrão: o do pacote.",
     )
     args = parser.parse_args()
     meetings, _ = load_corpus()

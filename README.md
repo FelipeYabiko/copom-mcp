@@ -65,7 +65,7 @@ embeddings, o que leva alguns minutos.
 | `ler_ata` | Texto de uma ata por seção e parágrafo, com a decisão de juros |
 | `listar_reunioes` | Reuniões com a meta Selic antes e depois e a decisão (alta, corte ou manutenção) |
 | `consultar_indicador` | Séries oficiais do BCB: meta Selic, IPCA (mensal e 12 meses), IGP-M e dólar PTAX |
-| `analise_reuniao` | Análise estruturada gerada pelo Claude: tom, fatores, riscos e orientação futura |
+| `analise_reuniao` | Análise estruturada gerada por IA (Gemini 3.5 Flash-Lite): tom, fatores, riscos e orientação futura |
 
 Também há **recursos** (`copom://reunioes`, `copom://atas/{reuniao}`) e **prompts** (`analisar_reuniao`,
 `comparar_reunioes`).
@@ -146,9 +146,15 @@ python evals/run_extracao.py --analises evals/results/analises-groq.json
 | `gemini` | `gemini-3.5-flash-lite` | Aceita atas longas e vai com o exemplo; o melhor para rodar o corpus inteiro |
 | `openrouter` | escolha com `--modelo` | Modelos gratuitos têm sufixo `:free` e mudam com frequência |
 
-As análises vão para `evals/results/analises-<provedor>.json` (fora do Git), sem misturar com as do Claude que
-vão no pacote. O 429 por minuto é respeitado (`retry-after`); cota do dia esgotada, chave inválida ou três atas
+As análises vão para `evals/results/analises-<provedor>.json` (fora do Git), a não ser que `--saida` indique
+outro arquivo. O 429 por minuto é respeitado (`retry-after`); cota do dia esgotada, chave inválida ou três atas
 seguidas com erro param a execução, que continua de onde parou na próxima vez.
+
+**As análises do pacote** (`src/copom_mcp/data/analises.json`, lidas por `analise_reuniao`) foram geradas
+assim, com o Gemini, para as 248 reuniões com decisão:
+`copom-mcp extrair --provedor gemini --saida src/copom_mcp/data/analises.json`. No eval, a decisão e a nova
+Selic batem com a série oficial em todas as 247 avaliadas, e todas as citações (§N) existem na ata. A variação
+em pontos-base acerta 96,8%: em 8 atas (2005-2006 e 2013), o modelo escreve ±25 pb onde o passo foi maior.
 
 ## Desenvolvimento
 

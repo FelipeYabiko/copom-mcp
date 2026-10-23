@@ -68,6 +68,12 @@ async def test_structured_analysis(server):
     assert missing.is_error and "ler_ata" in missing.content[0].text
 
 
+async def test_analysis_of_a_meeting_before_the_selic_target(server):
+    async with Client(server) as client:
+        result = await client.call_tool("analise_reuniao", {"reuniao": 30})
+    assert result.is_error and "anterior à meta Selic" in result.content[0].text
+
+
 async def test_list_meetings_with_filters(server):
     async with Client(server) as client:
         result = await client.call_tool("listar_reunioes", {"desde": "2026", "decisao": "corte"})
