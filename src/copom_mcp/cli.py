@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import sys
@@ -14,6 +15,7 @@ from .providers import PROVIDERS, most_recent
 
 ANALYSES_PATH = Path(__file__).parent / "data" / "analises.json"
 TRACE_PATH = Path("evals/results/traces.jsonl")
+BATCH_STATE_PATH = Path("evals/results/lote-pendente.json")
 MAX_CONSECUTIVE_FAILURES = 3
 
 
@@ -97,6 +99,12 @@ def main(argv: list[str] | None = None) -> int:
     return 0
 
 
+def _pending_batch() -> dict | None:
+    if not BATCH_STATE_PATH.exists():
+        return None
+    return json.loads(BATCH_STATE_PATH.read_text(encoding="utf-8"))
+
+
 def _positive(value: str) -> int:
     number = int(value)
     if number < 1:
@@ -121,13 +129,31 @@ def _extract(numbers: list[int], batch: bool, output: Path, limit: int | None = 
     extractor = Extractor(anthropic.Anthropic(), meetings, chunks, trace_path=TRACE_PATH)
     logging.info("%d atas para analisar.", len(todo))
 
+    pending = _pending_batch()
     if batch:
         client = extractor.client
-        job = client.messages.batches.create(requests=extractor.batch_requests(todo))
-        logging.info("Lote %s criado. Aguardando (pode levar até 24 h)...", job.id)
-        while (job := client.messages.batches.retrieve(job.id)).processing_status != "ended":
-            time.sleep(60)
-        for result in client.messages.batches.results(job.id):
+        if pending:
+            # Um lote já criado e pago: retoma em vez de criar outro com as mesmas atas.
+            job_id = pending["id"]
+            logging.info("Retomando o lote %s (%d atas), criado antes.", job_id, len(pending["reunioes"]))
+        elif not todo:
+            logging.info("Nada para analisar.")
+            return 0
+        else:
+            job_id = client.messages.batches.create(requests=extractor.batch_requests(todo)).id
+            # Salvo antes de esperar: se o programa parar, o lote segue na Anthropic e é retomado depois.
+            BATCH_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+            BATCH_STATE_PATH.write_text(json.dumps({"id": job_id, "reunioes": todo}), encoding="utf-8")
+            logging.info("Lote %s criado. Aguardando (pode levar até 24 h)...", job_id)
+        try:
+            while client.messages.batches.retrieve(job_id).processing_status != "ended":
+                time.sleep(60)
+        except KeyboardInterrupt:
+            logging.warning(
+                "Interrompido. O lote %s continua na Anthropic; rode de novo com --lote para buscar.", job_id
+            )
+            return 130
+        for result in client.messages.batches.results(job_id):
             number, analysis, error = Extractor.parse_batch_result(result)
             if result.result.type == "succeeded":
                 extractor.record(number, result.result.message, latency=None, batch=True)
@@ -135,6 +161,15 @@ def _extract(numbers: list[int], batch: bool, output: Path, limit: int | None = 
                 analyses[number] = analysis
             else:
                 logging.warning("Reunião %d: %s", number, error)
+        save_analyses(output, analyses)
+        BATCH_STATE_PATH.unlink(missing_ok=True)
+    elif pending:
+        logging.error(
+            "O lote %s ainda está pendente. Rode com --lote para buscar os resultados, em vez de pagar de novo "
+            "pelas mesmas atas.",
+            pending["id"],
+        )
+        return 1
     else:
         for number in todo:
             try:
