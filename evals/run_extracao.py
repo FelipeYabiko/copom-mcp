@@ -1,4 +1,4 @@
-"""Eval da extração estruturada: compara o que o Claude extraiu com a meta Selic oficial (SGS 432).
+"""Eval da extração estruturada: compara o que o modelo extraiu com a meta Selic oficial (SGS 432).
 
 A decisão, a nova Selic e a variação em pontos-base têm gabarito objetivo. O tom não tem, então
 medimos só a consistência: corte com tom "duro" é possível, mas vale olhar caso a caso. A ata do
@@ -6,10 +6,12 @@ exemplo few-shot (281ª) fica de fora, porque o modelo viu a resposta dela no pr
 
 Uso (depois de `copom-mcp extrair`):
     python evals/run_extracao.py
+    python evals/run_extracao.py --analises evals/results/analises-groq.json
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 from collections import Counter
 from pathlib import Path
@@ -51,28 +53,42 @@ def evaluate(meetings, analyses) -> dict:
     }
 
 
-def cost_summary() -> dict | None:
-    if not TRACES.exists():
-        return None
-    traces = [json.loads(line) for line in TRACES.read_text().splitlines() if line]
-    total_input = sum(t["input_tokens"] + t["cache_read_tokens"] + t["cache_write_tokens"] for t in traces)
-    return {
-        "chamadas": len(traces),
-        "custo_total_usd": round(sum(t["cost_usd"] for t in traces), 2),
-        "fracao_entrada_do_cache": round(sum(t["cache_read_tokens"] for t in traces) / max(total_input, 1), 3),
-        "latencia_media_s": round(
-            sum(t["latency_s"] for t in traces if t["latency_s"] >= 0)
-            / max(1, sum(t["latency_s"] >= 0 for t in traces)),
-            1,
-        ),
-    }
+def cost_summary(traces: list[dict]) -> dict:
+    """Chamadas, custo, uso de cache e latência, separados por modelo (ex.: Claude e groq:openai/gpt-oss-120b)."""
+    by_model: dict[str, list[dict]] = {}
+    for t in traces:
+        by_model.setdefault(t["model"], []).append(t)
+    summary = {}
+    for model, rows in by_model.items():
+        total_input = sum(t["input_tokens"] + t["cache_read_tokens"] + t["cache_write_tokens"] for t in rows)
+        timed = [t["latency_s"] for t in rows if t["latency_s"] >= 0]
+        summary[model] = {
+            "chamadas": len(rows),
+            "tokens_entrada": total_input,
+            "tokens_saida": sum(t["output_tokens"] for t in rows),
+            "custo_total_usd": round(sum(t["cost_usd"] for t in rows), 2),
+            "fracao_entrada_do_cache": round(sum(t["cache_read_tokens"] for t in rows) / max(total_input, 1), 3),
+            "latencia_media_s": round(sum(timed) / len(timed), 1) if timed else None,
+        }
+    return summary
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Compara as análises extraídas com a meta Selic oficial.")
+    parser.add_argument(
+        "--analises",
+        type=Path,
+        default=ANALYSES,
+        help="Arquivo de análises (ex.: evals/results/analises-groq.json). Padrão: o do pacote (Claude).",
+    )
+    args = parser.parse_args()
     meetings, _ = load_corpus()
-    analyses = load_analyses(ANALYSES)
+    analyses = load_analyses(args.analises)
     if not analyses:
-        raise SystemExit("Nenhuma análise encontrada. Rode `copom-mcp extrair` antes (precisa de ANTHROPIC_API_KEY).")
+        raise SystemExit(f"Nenhuma análise em {args.analises}. Rode `copom-mcp extrair` antes.")
+    traces = [json.loads(line) for line in TRACES.read_text().splitlines() if line] if TRACES.exists() else []
     print(
-        json.dumps({"qualidade": evaluate(meetings, analyses), "custo": cost_summary()}, ensure_ascii=False, indent=1)
+        json.dumps(
+            {"qualidade": evaluate(meetings, analyses), "custo": cost_summary(traces)}, ensure_ascii=False, indent=1
+        )
     )

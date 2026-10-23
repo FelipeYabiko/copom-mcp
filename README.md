@@ -126,6 +126,26 @@ Para reproduzir: `python evals/run_busca.py` (adicione `--semantica --modelo <no
 compara a decisão, a nova Selic e a variação com a série oficial do BCB, além de somar custo, uso de cache e
 latência. A ata usada como exemplo no prompt fica fora da conta, para não inflar o resultado.
 
+**Testar sem custo.** A mesma extração roda em provedores com plano gratuito, pela API compatível com a da
+OpenAI: mesmo schema e mesmas instruções, com a resposta validada pelo Pydantic e uma nova tentativa quando
+vem fora do schema. Sem prompt caching nem Batch API, que são da Anthropic.
+
+```bash
+export GROQ_API_KEY=...                                   # ou GEMINI_API_KEY / OPENROUTER_API_KEY
+copom-mcp extrair --provedor groq --limite 5              # as 5 atas mais recentes que faltam
+python evals/run_extracao.py --analises evals/results/analises-groq.json
+```
+
+| Provedor | Modelo padrão | Observação |
+| --- | --- | --- |
+| `groq` | `openai/gpt-oss-120b` | Rápido, mas o plano gratuito tem poucos tokens por minuto: vai sem a ata de exemplo, e as atas longas (quase todas antes de 2016) não cabem |
+| `gemini` | `gemini-3.5-flash-lite` | Aceita atas longas e vai com o exemplo; o melhor para rodar o corpus inteiro |
+| `openrouter` | escolha com `--modelo` | Modelos gratuitos têm sufixo `:free` e mudam com frequência |
+
+As análises vão para `evals/results/analises-<provedor>.json` (fora do Git), sem misturar com as do Claude que
+vão no pacote. O 429 por minuto é respeitado (`retry-after`); cota do dia esgotada, chave inválida ou três atas
+seguidas com erro param a execução, que continua de onde parou na próxima vez.
+
 ## Desenvolvimento
 
 ```bash
@@ -143,6 +163,7 @@ npx @modelcontextprotocol/inspector .venv/bin/copom-mcp   # testar o servidor nu
 | `copom-mcp servir --http` | Servidor por Streamable HTTP |
 | `copom-mcp atualizar` | Baixa atas novas para `~/.local/share/copom-mcp` |
 | `copom-mcp extrair [reuniões] [--lote]` | Análise estruturada com o Claude (Batch API com `--lote`) |
+| `copom-mcp extrair --provedor groq [--limite N]` | A mesma análise num provedor gratuito (`groq`, `gemini` ou `openrouter`) |
 | `python scripts/build_corpus.py` | Regenera o corpus que vai no pacote |
 
 Abrindo o repositório no **Claude Code**, ele já vem configurado:
